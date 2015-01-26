@@ -1,0 +1,86 @@
+html {
+  position: relative;
+  min-height: 100%;
+
+//Usually I would have a seperate partial with mobile styles wrapped in a media query.
+//However, for this exercise I am not anticipating a huge amount of mobile styles so I will put them on each element I want to style for mobile.
+  @media screen and (max-width: 640px) {
+    height: auto;
+    min-height: inherit;
+  }
+}
+
+//Colors
+$colors: red, orange, green, blue;
+@each $color in $colors {
+    .#{$color}{
+        background-color: #{$color};
+    }
+}
+
+//Reset
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+
+body {
+  background: black;
+  color: white;
+  font-family: arial;
+}
+
+.score-wrap {
+  margin-top: 40px;
+}
+.wrapper {
+  margin: 0 auto;
+  width: 80%;
+  padding-top: 20px;
+  margin: auto;
+  margin-bottom: 180px;
+  text-align: center;
+  padding-top: 60px;
+
+  h2 {
+    text-transform: uppercase;
+    font-size: 3em;
+    margin-top: 30px;
+
+  }
+
+  .color-choice-ul {
+    margin-top: 30px;
+    height: 200px;
+
+    li {
+      display: inline-block;
+      color: black;
+      height: 50%;
+      width: 20%;
+      margin-right: 3%;
+      color: white;
+      position: relative;
+      border: 3px solid white;
+
+      a {
+        display: block;
+        height: 100%;
+        width: 100%;
+        position: absolute;
+        // top: 39px;
+        text-transform: uppercase;
+        vertical-align: middle;
+        cursor: pointer;
+      }
+    }
+  }
+
+  @media screen and (max-width: 640px) {
+    padding-top: 20px;
+  }
+}
+
+
