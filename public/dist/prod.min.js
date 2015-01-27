@@ -2,15 +2,17 @@
 
     var colorWord = {},
     	$colorText = d.querySelector('.color-wrap h2'),
-    	$colorChoices = d.querySelector('.color-choice ul');
+    	$colorChoices = d.querySelector('.color-choice ul'),
+    	correctColor;
+
 
     var colors = ['blue', 'red', 'green', 'orange'];
 
    	colorWord.init = function() {
-   		console.log('init');
+   		colorWord.speechSetup();
    		colorWord.setup();
-   		// colorWord.speechSetup();
    	};
+
 
    	colorWord.setup = function() {
    		$colorChoices.innerHTML = '';
@@ -20,6 +22,8 @@
    		$colorText.innerHTML = rand1;
    		$colorText.style.color = rand2;
    		colorWord.choices(rand2);
+   		correctColor = rand2;
+   		console.log('correctColor: ' + correctColor);
    	};
 
    	colorWord.events = function () {
@@ -31,8 +35,7 @@
    					colorWord.correctAnswer();
    				} else {
    					colorWord.incorrectAnswer();
-   				}
-   				
+   				}	   				
    			});
    		};
    	};
@@ -61,9 +64,7 @@
    	};
 
    	colorWord.choices = function(correctColor) {
-   		console.log('choices')
    		var c = correctColor;
-
    		function shuffle(array) {
 		  var currentIndex = array.length, temporaryValue, randomIndex ;
 		  // While there remain elements to shuffle...
@@ -81,11 +82,10 @@
 
 		var shuffleColors = shuffle(colors);
 		var choiceEls = [];
-
    		for (var i = shuffleColors.length - 1; i >= 0; i--) {
    			var el = d.createElement('li');
    			el.className = shuffleColors[i];
-   			el.innerHTML = '<a>' + shuffleColors[i] + '</a>';
+   			el.innerHTML = '<a><span>' + shuffleColors[i] + '</span></a>';
 
    			if (shuffleColors[i] == c) {
    				el.className = el.className + ' correct';
@@ -93,10 +93,8 @@
    			choiceEls.push(el);
    			// console.log(el)
    		};
+
    		var ul = d.getElementsByClassName('color-choice-ul');
-   		console.log(ul)
-
-
  		var fragment = d.createDocumentFragment();
 		for ( var e = 0; e < choiceEls.length; e++ ) {
 		    fragment.appendChild( choiceEls[e] );
@@ -109,39 +107,26 @@
    	};
 
    	colorWord.speechSetup = function() {
-   		console.log('speechSetup');
    		var recognition = new webkitSpeechRecognition();
 	  	recognition.continuous = true;
 	  	recognition.interimResults = true;
-
-
-	  	function startButton() {
-		  	final_transcript = '';
-		  	// recognition.lang = select_dialect.value;
-		  	recognition.start();
-  		}
-
-	  	startButton();
+	  	final_transcript = '';
+	  	recognition.lang = 'en-GB';
+	  	recognition.start();
 
 	  	recognition.onstart = function() {
-	  		alert("Recogniztion API started");
+	  		console.log("Recogniztion API started");
 	  	};
 
 	  	recognition.onresult = function(event) {
-	  		//event.resultIndex returns the index of first word spoken in the currently stoped sentence.
-            //event.results.length is the total number of words spoken in this session.
-            for(var count = event.resultIndex; count < event.results.length; count++)
-            {
-                //event.results array contains a array of word objects.
-                //event.results[count][number], here 2D represents the most probable work for the spoken word.
-                //event.result[count][number].transscript returns word string of the most probable word of the select word index.  
-                document.getElementById("output").innerHTML += event.results[count][0].transcript;
-                
-            }
-
-	  		console.log('hello');
-		    
-	  	};
+            for (var i = event.resultIndex; i < event.results.length; ++i) {
+		        if (event.results[i].isFinal) {
+		        	var word = event.results[i][0].transcript;
+		            console.log(word, correctColor);
+		            colorWord.sayColor(word, correctColor)
+		        }
+		    }
+  	  	};
 
 	  	recognition.onerror = function(event) {
 
@@ -151,6 +136,24 @@
 
 	  	};
 
+   	};
+
+   	colorWord.sayColor = function(word, correctColor) {
+   		console.log('word spoken: ' + word);
+   		console.log('correct word: ' + correctColor);
+   		console.log(typeof(word));
+   		console.log(typeof(correctColor));
+
+   		word.trim();
+   		correctColor.trim();
+
+   		if (word == correctColor) {
+   			console.log('right')
+			colorWord.correctAnswer();
+		} else {
+			console.log('wrong')
+			colorWord.incorrectAnswer();
+		}
    	};
 
 
