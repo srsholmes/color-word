@@ -9,6 +9,7 @@
    	colorWord.init = function() {
    		console.log('init');
    		colorWord.setup();
+   		colorWord.speechSetup();
    	};
 
    	colorWord.setup = function() {
@@ -107,6 +108,50 @@
 		colorWord.events();
    	};
 
+   	colorWord.speechSetup = function() {
+   		console.log('speechSetup');
+   		var recognition = new webkitSpeechRecognition();
+	  	recognition.continuous = true;
+	  	recognition.interimResults = true;
+
+
+	  	function startButton() {
+		  	final_transcript = '';
+		  	// recognition.lang = select_dialect.value;
+		  	recognition.start();
+  		}
+
+	  	startButton();
+
+	  	recognition.onstart = function() {
+	  		alert("Recogniztion API started");
+	  	};
+
+	  	recognition.onresult = function(event) {
+	  		//event.resultIndex returns the index of first word spoken in the currently stoped sentence.
+            //event.results.length is the total number of words spoken in this session.
+            for(var count = event.resultIndex; count < event.results.length; count++)
+            {
+                //event.results array contains a array of word objects.
+                //event.results[count][number], here 2D represents the most probable work for the spoken word.
+                //event.result[count][number].transscript returns word string of the most probable word of the select word index.  
+                document.getElementById("output").innerHTML += event.results[count][0].transcript;
+                
+            }
+
+	  		console.log('hello');
+		    
+	  	};
+
+	  	recognition.onerror = function(event) {
+
+	  	};
+
+	  	recognition.onend = function() {
+
+	  	};
+
+   	};
 
 
     colorWord.init();
