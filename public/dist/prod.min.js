@@ -21,9 +21,12 @@
    		// console.log($colorText, rand1)
    		$colorText.innerHTML = rand1;
    		$colorText.style.color = rand2;
-   		colorWord.choices(rand2);
+
+   		//Make the global correctColor variable rand2
    		correctColor = rand2;
    		console.log('correctColor: ' + correctColor);
+   		colorWord.choices(rand2);
+
    	};
 
    	colorWord.events = function () {
@@ -121,8 +124,10 @@
 	  	recognition.onresult = function(event) {
             for (var i = event.resultIndex; i < event.results.length; ++i) {
 		        if (event.results[i].isFinal) {
-		        	var word = event.results[i][0].transcript;
-		            console.log(word, correctColor);
+		        	//Need to trim the whitespace from the word before sending it to say color;
+		        	var word = event.results[i][0].transcript.replace(/(^\s+|\s+$)/g,'');;
+		        	// console.log(event.results)
+		        	// console.log(word);
 		            colorWord.sayColor(word, correctColor)
 		        }
 		    }
@@ -139,15 +144,12 @@
    	};
 
    	colorWord.sayColor = function(word, correctColor) {
-   		console.log('word spoken: ' + word);
-   		console.log('correct word: ' + correctColor);
-   		console.log(typeof(word));
-   		console.log(typeof(correctColor));
 
-   		word.trim();
-   		correctColor.trim();
+		assert(word === correctColor, 'word is not equal to correct color');
 
-   		if (word == correctColor) {
+   		// console.log(word.localeCompare(correctColor))
+
+   		if (word.localeCompare(correctColor) == 0) {
    			console.log('right')
 			colorWord.correctAnswer();
 		} else {
@@ -156,6 +158,18 @@
 		}
    	};
 
+
+	function assert(condition, message) {
+	    if (!condition) {
+	        message = message || "Assertion failed";
+	        if (typeof Error !== "undefined") {
+	            throw new Error(message);
+	        }
+	        throw message; // Fallback
+	    } else {
+	    	console.log('Test passed')
+	    }
+	}
 
     colorWord.init();
 
