@@ -124,10 +124,8 @@
 	  	recognition.onresult = function(event) {
             for (var i = event.resultIndex; i < event.results.length; ++i) {
 		        if (event.results[i].isFinal) {
-		        	//Need to trim the whitespace from the word before sending it to say color;
-		        	var word = event.results[i][0].transcript.replace(/(^\s+|\s+$)/g,'');;
-		        	// console.log(event.results)
-		        	// console.log(word);
+		        	//Need to trim the whitespace from the word before sending it to sayColor()	;
+		        	var word = event.results[i][0].transcript.replace(/(^\s+|\s+$)/g,'');
 		            colorWord.sayColor(word, correctColor)
 		        }
 		    }
@@ -144,10 +142,9 @@
    	};
 
    	colorWord.sayColor = function(word, correctColor) {
-
-		assert(word === correctColor, 'word is not equal to correct color');
-
-   		// console.log(word.localeCompare(correctColor))
+   		console.log('word spoken: ' + word);
+   		console.log('correct color: ' + correctColor);
+		// assert(word.localeCompare(correctColor) == 0, 'word is not equal to correct color');
 
    		if (word.localeCompare(correctColor) == 0) {
    			console.log('right')
@@ -159,6 +156,7 @@
    	};
 
 
+   	//Test function
 	function assert(condition, message) {
 	    if (!condition) {
 	        message = message || "Assertion failed";
@@ -167,7 +165,7 @@
 	        }
 	        throw message; // Fallback
 	    } else {
-	    	console.log('Test passed')
+	    	console.log('Test passed');
 	    }
 	}
 
