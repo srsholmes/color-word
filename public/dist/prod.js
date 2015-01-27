@@ -9,7 +9,7 @@
    	colorWord.init = function() {
    		console.log('init');
    		colorWord.setup();
-   		colorWord.speechSetup();
+   		// colorWord.speechSetup();
    	};
 
    	colorWord.setup = function() {
