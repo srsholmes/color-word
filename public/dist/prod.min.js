@@ -9,7 +9,7 @@
     var colors = ['blue', 'red', 'green', 'orange'];
 
    	colorWord.init = function() {
-   		colorWord.speechSetup();
+   		// colorWord.speechSetup();
    		colorWord.setup();
    	};
 
@@ -26,10 +26,9 @@
    		correctColor = rand2;
    		console.log('correctColor: ' + correctColor);
    		colorWord.choices(rand2);
-
    	};
 
-   	colorWord.events = function () {
+   	colorWord.events = function() {
    		$colorChoicesTags = d.querySelectorAll('li');   		
    		for (var i = $colorChoicesTags.length - 1; i >= 0; i--) {
    			$colorChoicesTags[i].addEventListener('click', function(){
@@ -42,6 +41,10 @@
    			});
    		};
    	};
+
+    colorWord.timer = function(t) {
+        var secs = t;
+    }
 
    	colorWord.correctAnswer = function() {
    		var score = d.querySelector('span.score').innerHTML,

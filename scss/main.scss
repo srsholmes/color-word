@@ -35,6 +35,37 @@ body {
 .score-wrap {
   margin-top: 40px;
 }
+
+
+//Timer
+.timer-wrap {
+  position: relative;
+  height: 30px;
+  width: 100%;
+
+  .bar {
+    position: absolute;
+    top: 0;
+    height: 2px;
+    width: 100%;
+    transition: width 0.3s ease-in;
+  }
+
+  .below {
+    background: black;
+    width: 100%;
+  }
+
+  .over {
+    background: #818181;
+    width: 0%;
+
+    &.full {
+      width: 100%;
+    }
+  }
+}
+
 .wrapper {
   margin: 0 auto;
   width: 80%;
