@@ -18,6 +18,7 @@
 
 
    	colorWord.setup = function() {
+        //Set the progress bar value and width
         progressBarWidth = 0;
         $progressBar.style.width = progressBarWidth + '%';
 
@@ -52,7 +53,6 @@
         $progressBar.style.width = progressBarWidth + '%';
         progressBarWidth += 0.5;
         if (progressBarWidth < 100){
-            console.log(progressBarWidth)
             requestAnimationFrame(colorWord.timer);
         } else {
             colorWord.incorrectAnswer();
@@ -68,7 +68,6 @@
    		highScore = parseInt(highScore);
    		score ++ ;
    		d.querySelector('span.score').innerHTML = score;
-
    		if (score > highScore) {
    			d.querySelector('span.high-score').innerHTML = score;
    		}
