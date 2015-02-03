@@ -3,7 +3,8 @@
     var colorWord = {},
     	$colorText = d.querySelector('.color-wrap h2'),
     	$colorChoices = d.querySelector('.color-choice ul'),
-    	correctColor;
+    	correctColor,
+        progressBarWidth = 0;
 
 
     var colors = ['blue', 'red', 'green', 'orange'];
@@ -11,6 +12,7 @@
    	colorWord.init = function() {
    		// colorWord.speechSetup();
    		colorWord.setup();
+        colorWord.timer();
    	};
 
 
@@ -42,9 +44,16 @@
    		};
    	};
 
-    colorWord.timer = function(t) {
-        var secs = t;
-    }
+    colorWord.timer = function() {
+        var  $progressBar = d.querySelector('.timer-wrap .over');
+        $progressBar.style.width = progressBarWidth + '%';
+        progressBarWidth += 1;
+
+        if ($progressBar.style.width != "100%"){
+            requestAnimationFrame(colorWord.timer, 99999);
+        }
+    };
+
 
    	colorWord.correctAnswer = function() {
    		var score = d.querySelector('span.score').innerHTML,
@@ -151,11 +160,11 @@
 
    		if (word.localeCompare(correctColor) == 0) {
    			console.log('right')
-			colorWord.correctAnswer();
-		} else {
-			console.log('wrong')
-			colorWord.incorrectAnswer();
-		}
+  			colorWord.correctAnswer();
+  		} else {
+  			console.log('wrong')
+  			colorWord.incorrectAnswer();
+  		}
    	};
 
 
@@ -172,8 +181,48 @@
 	    }
 	}
 
-    colorWord.init();
 
+    // requestAnimationFrame polyfill by Erik Möller
+    // fixes from Paul Irish and Tino Zijdel
+
+    (function() {
+        var lastTime = 0;
+        var vendors = ['webkit', 'moz'];
+        for(var x = 0; x < vendors.length && !window.requestAnimationFrame; ++x) {
+            window.requestAnimationFrame = window[vendors[x]+'RequestAnimationFrame'];
+            window.cancelAnimationFrame =
+              window[vendors[x]+'CancelAnimationFrame'] || window[vendors[x]+'CancelRequestAnimationFrame'];
+        }
+
+        if (!window.requestAnimationFrame)
+            window.requestAnimationFrame = function(callback, element) {
+                var currTime = new Date().getTime();
+                var timeToCall = Math.max(0, 16 - (currTime - lastTime));
+                var id = window.setTimeout(function() { callback(currTime + timeToCall); },
+                  timeToCall);
+                lastTime = currTime + timeToCall;
+                return id;
+            };
+
+        if (!window.cancelAnimationFrame)
+            window.cancelAnimationFrame = function(id) {
+                clearTimeout(id);
+            };
+    }());
+
+    // shim layer with setTimeout fallback
+    window.requestAnimFrame = (function(){
+        return  window.requestAnimationFrame       ||
+            window.webkitRequestAnimationFrame ||
+            window.mozRequestAnimationFrame    ||
+            function( callback ){
+                window.setTimeout(callback, 1000 / 60);
+            };
+    })();
+
+
+
+    colorWord.init();
 
     w[ns] = w[ns] || {};
     w[ns].colorWord = colorWord;
