@@ -3,6 +3,7 @@
     var colorWord = {},
     	$colorText = d.querySelector('.color-wrap h2'),
     	$colorChoices = d.querySelector('.color-choice ul'),
+        $progressBar = d.querySelector('.timer-wrap .over'),
     	correctColor,
         progressBarWidth = 0;
 
@@ -17,6 +18,9 @@
 
 
    	colorWord.setup = function() {
+        progressBarWidth = 0;
+        $progressBar.style.width = progressBarWidth + '%';
+
    		$colorChoices.innerHTML = '';
    		var rand1 = colors[Math.floor(Math.random() * colors.length)];
    		var rand2 = colors[Math.floor(Math.random() * colors.length)];
@@ -35,7 +39,7 @@
    		for (var i = $colorChoicesTags.length - 1; i >= 0; i--) {
    			$colorChoicesTags[i].addEventListener('click', function(){
    				var className = this.className;
-   				if ( colorWord.hasClass(this, 'correct' )) {
+   				if ( colorWord.hasClass(this, 'correct' ) && progressBarWidth < 100) {
    					colorWord.correctAnswer();
    				} else {
    					colorWord.incorrectAnswer();
@@ -45,12 +49,14 @@
    	};
 
     colorWord.timer = function() {
-        var  $progressBar = d.querySelector('.timer-wrap .over');
         $progressBar.style.width = progressBarWidth + '%';
-        progressBarWidth += 1;
-
-        if ($progressBar.style.width != "100%"){
-            requestAnimationFrame(colorWord.timer, 99999);
+        progressBarWidth += 0.5;
+        if (progressBarWidth < 100){
+            console.log(progressBarWidth)
+            requestAnimationFrame(colorWord.timer);
+        } else {
+            colorWord.incorrectAnswer();
+            requestAnimationFrame(colorWord.timer);
         }
     };
 
