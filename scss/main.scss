@@ -36,6 +36,18 @@ body {
   margin-top: 40px;
 }
 
+.game-wrapper {
+  display: none;
+  &.show {
+    display: block;
+  }
+}
+
+.difficulty {
+  &.hide {
+    display: none;  
+  }
+}
 
 //Timer
 .timer-wrap {
@@ -83,7 +95,7 @@ body {
 
   }
 
-  .color-choice-ul {
+  .color-choice-ul, .difficulty {
     margin-top: 30px;
     height: 200px;
 
@@ -117,6 +129,16 @@ body {
           right: 0;
           margin: auto;
         }
+      }
+    }
+  }
+
+  .difficulty {
+    li {
+      margin-top: 40px;
+      width: 28%;
+      a {
+        color: white;
       }
     }
   }

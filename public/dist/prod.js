@@ -1,26 +1,26 @@
 (function(w,d,ns) {
 
     var colorWord = {},
+        $gameWrapper = d.querySelector('.game-wrapper'),
+        $difficulty = d.querySelector('.difficulty'),
     	$colorText = d.querySelector('.color-wrap h2'),
     	$colorChoices = d.querySelector('.color-choice ul'),
         $progressBar = d.querySelector('.timer-wrap .over'),
     	correctColor,
-        progressBarWidth = 0;
+        progressBarWidth = 0,
+        difficulty = 0;
 
 
     var colors = ['blue', 'red', 'green', 'orange'];
 
-   	colorWord.init = function() {
-   		// colorWord.speechSetup();
-   		colorWord.setup();
-        colorWord.timer();
-   	};
-
-
    	colorWord.setup = function() {
+        console.log('setup')
+
         //Set the progress bar value and width
         progressBarWidth = 0;
         $progressBar.style.width = progressBarWidth + '%';
+        $gameWrapper.style.display = 'block';
+        $difficulty.style.display = 'none';
 
    		$colorChoices.innerHTML = '';
    		var rand1 = colors[Math.floor(Math.random() * colors.length)];
@@ -36,7 +36,7 @@
    	};
 
    	colorWord.events = function() {
-   		$colorChoicesTags = d.querySelectorAll('li');   		
+   		$colorChoicesTags = d.querySelectorAll('.color-choice-ul li');   		
    		for (var i = $colorChoicesTags.length - 1; i >= 0; i--) {
    			$colorChoicesTags[i].addEventListener('click', function(){
    				var className = this.className;
@@ -47,11 +47,38 @@
    				}	   				
    			});
    		};
+
+        $difficultyTag = d.querySelectorAll('ul.difficulty li');          
+        for (var i = $difficultyTag.length - 1; i >= 0; i--) {
+            $difficultyTag[i].addEventListener('click', function(){
+                var diff = this.getAttribute('data-diff');
+                switch(diff) {
+                    case '0':
+                        difficulty = 0.7;
+                        colorWord.setup();
+                        colorWord.timer()
+                        break;
+                    case '1':
+                        difficulty = 1;
+                        colorWord.setup();
+                        colorWord.timer()
+                        break;
+                    case '2':
+                        difficulty = 1.5;
+                        colorWord.setup();
+                        colorWord.timer()
+                        break;
+                    default:
+                        console.log('no diff')
+                }
+            });
+        };
    	};
 
     colorWord.timer = function() {
         $progressBar.style.width = progressBarWidth + '%';
-        progressBarWidth += 0.5;
+        console.log(difficulty)
+        progressBarWidth += difficulty;
         if (progressBarWidth < 100){
             requestAnimationFrame(colorWord.timer);
         } else {
@@ -76,7 +103,13 @@
 
    	colorWord.incorrectAnswer = function() {
    		d.querySelector('.score-wrap .score').innerHTML = 0;
-   		colorWord.setup();
+        if (confirm('Do you want to play again?')) {
+            colorWord.setup();
+        } else {
+            w.location = 'http://www.google.com';
+            return;
+        }   
+        // colorWord.setup();
    	};
 
    	colorWord.hasClass = function(el, className) {
@@ -227,7 +260,7 @@
 
 
 
-    colorWord.init();
+    colorWord.events();
 
     w[ns] = w[ns] || {};
     w[ns].colorWord = colorWord;
