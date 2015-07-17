@@ -22,16 +22,20 @@ let Game = React.createClass({
 
   render(){
     var colors = this.props.colors;
-    console.log(colors);
-    console.log(shuffle(colors));
-    var rand1 = colors[Math.floor(Math.random() * colors.length)];
-    var rand2 = colors[Math.floor(Math.random() * colors.length)];
-    var correctColor = rand2;
+    var shuffledColors = shuffle(colors);
+    var shuffledColors2 = shuffle(colors);
+    //These need shuffling better for it to work.
+    console.log(shuffledColors);
+    console.log(shuffledColors2);
+    var correctColor = shuffledColors[Math.floor(Math.random() * colors.length)];
 
-    var colorList = shuffle(colors).map(function (color, i) {
+    console.log(correctColor);
+
+    var colorList = shuffledColors.map(function (color, i) {
       return (
         <li className={color + ' color-item'} onClick={this.chooseColor.bind(null, i)}>
-          <a><span>{color}</span></a>
+          <a><span>{shuffledColors2[i]}</span></a>
+          <p>{shuffledColors[i]}</p>
         </li>
       )
     }, this);
