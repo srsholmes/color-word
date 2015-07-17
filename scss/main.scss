@@ -32,6 +32,13 @@ body {
   font-family: arial;
 }
 
+.heading {
+  font-size: 1em;
+  span {
+    font-size: 0.6em;
+  }
+}
+
 .score-wrap {
   margin-top: 40px;
 }
