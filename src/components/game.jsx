@@ -14,34 +14,30 @@ let Game = React.createClass({
     Reflux.connect(Store)
   ],
 
-  chooseColor(i) {
-    console.log('color chosen');
-    console.log(i);
+  chooseColor(i, shuffledColors, correctColor) {
+    shuffledColors[i] == correctColor ? alert('correct') : alert('incorrect')
   },
-
 
   render(){
     var colors = this.props.colors;
     var correctColor = this.props.correctColor;
-    var wordColor = colors[Math.floor(Math.random() * colors.length)];
+    var word = colors[Math.floor(Math.random() * colors.length)];
     var shuffledColors = shuffle(colors);
-    var shuffledColors2 = shuffle(colors);
-    //These need shuffling better for it to work.
-    console.log(shuffledColors);
-    console.log(shuffledColors2);
+    var colorStyle = {
+      color: correctColor
+    }
 
     var colorList = shuffledColors.map(function (color, i) {
       return (
-        <li className={color + ' color-item'} onClick={this.chooseColor.bind(null, i)}>
-          <a><span>{shuffledColors2[i]}</span></a>
-          <p>{shuffledColors[i]}</p>
+        <li className={'bg-'+ color + ' color-item'} onClick={this.chooseColor.bind(null, i, shuffledColors, correctColor)}>
+          <a><span>{shuffledColors[i]}</span></a>
         </li>
       )
     }, this);
 
     return (
       <div className="game-wrapper">
-        <h2 className={correctColor}>{wordColor}</h2>
+        <h2 className={'color-' + correctColor + ''}>{word}</h2>
         <ul className="color-choice-ul">{colorList}</ul>
       </div>
     )

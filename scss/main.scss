@@ -10,13 +10,28 @@ html {
   }
 }
 
-//Colors
-$colors: red, orange, green, blue;
-@each $color in $colors {
-    .#{$color}{
-        background-color: #{$color};
+
+$Blue: #2196F3;
+$Red: #FF4F4F;
+$Orange: #FF9800;
+$Green: #2196F3;
+// $Purple: #FF9800;
+// $Pink: #FF9800;
+
+
+$colors: ("blue":  #2196F3, "red": #FF4F4F, "orange": #FF9800, "green": #8BC34A);
+
+@each $colorName, $color in $colors {
+    .bg-#{$colorName} {
+        background-color: $color;
+    }
+    .color-#{$colorName} {
+        color: $color;
     }
 }
+
+$bg-color: #FDFDFD;
+$text-color: #414141;
 
 //Reset
 * {
@@ -27,8 +42,9 @@ $colors: red, orange, green, blue;
 
 
 body {
-  background: black;
-  color: white;
+  background: $bg-color;
+  color: $text-color;
+  //Change to roboto when internet.
   font-family: arial;
 }
 
@@ -108,17 +124,21 @@ body {
   .color-choice-ul, .difficulty {
     margin-top: 30px;
     height: 200px;
-
+    display: flex;
+    flex-wrap: wrap;
+    
     li {
-      display: inline-block;
-      height: 43%;
-      width: 39%;
-      margin-right: 4%;
-      margin-top: 4px;
-      color: white;
+      display: flex;
+      flex-grow: 1;
+      height: 100px;
+      color: #fff;
       position: relative;
-      border: 3px solid white;
-
+      margin: 0 1%;
+      @media screen and (max-width: 640px) {
+        flex-grow: 2;
+        min-width: 45%;
+        margin-top: 2%;
+      }
       a {
         display: block;
         height: 100%;

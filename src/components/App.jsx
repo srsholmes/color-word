@@ -14,6 +14,7 @@ let App = React.createClass({
   ],
 
   getInitialState() {
+    //Make colors an object with the material colors to match the css. 
     var colors = ['blue', 'red', 'green', 'orange'];
     var correctColor = colors[Math.floor(Math.random() * colors.length)];
 
