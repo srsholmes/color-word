@@ -5,7 +5,7 @@ let Actions = require('../actions/actions');
 //Stores
 let Store = require('../stores/store');
 
-import { shuffle } from '../modules';
+import { shuffle, colors } from '../modules';
 
 
 let Game = React.createClass({
@@ -16,7 +16,7 @@ let Game = React.createClass({
 
   chooseColor(i, shuffledColors, correctColor) {
     console.log('chooose color');
-    shuffledColors[i] == correctColor ? Actions.correctAnswer() : alert('incorrect')
+    shuffledColors[i] == correctColor ? Actions.correctAnswer() : Actions.incorrectAnswer()
   },
 
   render(){
