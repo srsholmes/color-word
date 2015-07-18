@@ -14,8 +14,12 @@ let App = React.createClass({
   ],
 
   getInitialState() {
+    var colors = ['blue', 'red', 'green', 'orange'];
+    var correctColor = colors[Math.floor(Math.random() * colors.length)];
+
     return {
-      colors: ['blue', 'red', 'green', 'orange']
+      colors: colors,
+      correctColor: correctColor
     };
   },
 
@@ -23,7 +27,7 @@ let App = React.createClass({
     return (
       <div>
         <h1>Colour Word - <span>choose the colour, not the word.</span></h1>
-        <Game colors={this.state.colors}/>
+        <Game colors={this.state.colors} correctColor={this.state.correctColor}/>
       </div>
     )
   }
