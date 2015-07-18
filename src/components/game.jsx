@@ -19,7 +19,14 @@ let Game = React.createClass({
     shuffledColors[i] == correctColor ? Actions.correctAnswer() : Actions.incorrectAnswer()
   },
 
+  shouldComponentUpdate(nextProps) {
+    console.log(nextProps.colors);
+    if (nextProps.colors === this.props.colors) return false;
+    return true;
+  },
+
   render(){
+    console.log('game render');
     var colors = this.props.colors;
     var correctColor = this.props.correctColor;
     var word = colors[Math.floor(Math.random() * colors.length)];

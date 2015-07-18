@@ -2,26 +2,39 @@ let React = require('react');
 let Reflux = require('reflux');
 let Actions = require('../actions/actions');
 
-import { colors } from '../modules';
+import { colors, requestAnimationFrame } from '../modules';
+
+var timer = 0;
 
 let Store = Reflux.createStore({
   listenables: [Actions],
 
   init() {
     this.score = 0;
+    this.timer = 0;
   },
 
   onCorrectAnswer() {
+  	var colorsArray = colors();
+    var correctColor = colorsArray[Math.floor(Math.random() * colorsArray.length)];
   	this.score++ 
   	this.trigger({
-  		score: this.score
+  		colors: colorsArray,
+  		correctColor: correctColor,
+  		score: this.score,
+  		timer: 0
   	});
   },
 
   onIncorrectAnswer() {
+  	var colorsArray = colors();
+    var correctColor = colorsArray[Math.floor(Math.random() * colorsArray.length)];
   	this.score = 0;
   	this.trigger({
-  		score: this.score
+  		colors: colorsArray,
+  		correctColor: correctColor,
+  		score: this.score,
+  		timer: 0
   	});
   }
 });

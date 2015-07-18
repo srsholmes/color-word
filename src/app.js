@@ -1,6 +1,5 @@
 require('babelify/polyfill');
 import 'whatwg-fetch';
-
 let React = require('react');
 
 //Needed for React Developer Tools

@@ -14,6 +14,11 @@ let Score = React.createClass({
     Reflux.connect(Store)
   ],
 
+  shouldComponentUpdate(nextProps) {
+    if (nextProps.score === this.props.score) return false;
+    return true;
+  },
+
   render(){
     return (
       <div className="score-wrap">

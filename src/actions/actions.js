@@ -2,7 +2,7 @@ let Reflux = require('reflux');
 
 let Actions = Reflux.createActions({
   'correctAnswer': {},
-  'incorrectAnswer': {},
+  'incorrectAnswer': {}
 });
 
 export default Actions;

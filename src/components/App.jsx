@@ -16,19 +16,23 @@ let App = React.createClass({
   ],
 
   getInitialState() {
+    //Make colors an object with the material colors to match the css. 
+    var colorsArray = colors();
+    var correctColor = colorsArray[Math.floor(Math.random() * colorsArray.length)];
     return {
-      score: 0
+      colors: colorsArray,
+      correctColor: correctColor,
+      score: 0,
+      timer: 50
     };
   },
 
   render(){
-    var colorsArray = colors();
-    var correctColor = colorsArray[Math.floor(Math.random() * colorsArray.length)];
     return (
       <div>
         <h1>Colour Word - <span>choose the colour, not the word.</span></h1>
-        <Game colors={colorsArray} correctColor={correctColor}/>
-        <Timer/>
+        <Game colors={this.state.colors} correctColor={this.state.correctColor}/>
+        <Timer timer={this.state.timer}/>
         <Score score={this.state.score}/>
       </div>
     )

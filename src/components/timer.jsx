@@ -14,13 +14,15 @@ let Timer = React.createClass({
     Reflux.connect(Store)
   ],
 
-  chooseColor(i, shuffledColors, correctColor) {
-    shuffledColors[i] == correctColor ? alert('correct') : alert('incorrect')
-  },
+  
 
   render(){
+    var timerStyle = {
+      width: this.props.timer + '%'
+    }
     return (
       <div className="timer-wrap">
+        <div style={timerStyle} className="bar"></div>
         <p>Timer</p>
       </div>
     )
@@ -28,3 +30,5 @@ let Timer = React.createClass({
 });
 
 export default Timer;
+
+
