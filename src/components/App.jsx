@@ -5,7 +5,9 @@ let Actions = require('../actions/actions');
 //Stores
 let Store = require('../stores/store');
 
-import { Game } from './';
+import { Game, Timer, Score } from './';
+
+// import { colors } from '../modules';
 
 let App = React.createClass({
 
@@ -20,7 +22,8 @@ let App = React.createClass({
 
     return {
       colors: colors,
-      correctColor: correctColor
+      correctColor: correctColor,
+      score: 0
     };
   },
 
@@ -29,6 +32,8 @@ let App = React.createClass({
       <div>
         <h1>Colour Word - <span>choose the colour, not the word.</span></h1>
         <Game colors={this.state.colors} correctColor={this.state.correctColor}/>
+        <Timer/>
+        <Score score={this.state.score}/>
       </div>
     )
   }

@@ -15,7 +15,8 @@ let Game = React.createClass({
   ],
 
   chooseColor(i, shuffledColors, correctColor) {
-    shuffledColors[i] == correctColor ? alert('correct') : alert('incorrect')
+    console.log('chooose color');
+    shuffledColors[i] == correctColor ? Actions.correctAnswer() : alert('incorrect')
   },
 
   render(){
@@ -23,10 +24,6 @@ let Game = React.createClass({
     var correctColor = this.props.correctColor;
     var word = colors[Math.floor(Math.random() * colors.length)];
     var shuffledColors = shuffle(colors);
-    var colorStyle = {
-      color: correctColor
-    }
-
     var colorList = shuffledColors.map(function (color, i) {
       return (
         <li className={'bg-'+ color + ' color-item'} onClick={this.chooseColor.bind(null, i, shuffledColors, correctColor)}>
