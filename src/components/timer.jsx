@@ -20,7 +20,6 @@ let Timer = React.createClass({
   },
   componentDidMount() {
     console.log('componentDidMount');
-    // this.timer = setInterval(this.tick, 10);
     this.tick();
   },
   clearTimer() {
@@ -28,44 +27,30 @@ let Timer = React.createClass({
     clearInterval(this.timer);
   },
   tick() {
+    console.log('tick');
     this.timer = setTimeout(() =>{
       console.log(tickCount);
-      tickCount++;
+      tickCount ++;
       if (tickCount < 300) {
         this.tick();
         Actions.setTick(( tickCount ));
       } else {
-        Actions.incorrectAnswer();
+        // Actions.incorrectAnswer();
+        clearTimeout(this.timer);
+        // this.clearInterval();
         return
       } 
     }, 10)
-    // Actions.setTick(( new Date() - this.props.start ));
-    // var self = this;
-    // this.interval = setTimeout(function() {
-    //   if (self.props.status.isStop()) {
-    //     self.interval = undefined;
-    //     return;
-    //   }
-    //   self.setState({timeLeft: self.state.timeLeft - 1});
-    //   if (self.state.timeLeft <= 0) {
-    //     self.setState({timeLeft: self.defaultTimeout});
-    //     self.handleTimeout();
-    //   }
-    //   self._tick();
-    // }, 1000);
+    //1000 ticks in a second
   },
   
   render(){
-    var elapsed = this.props.elapsed / 100;
-    var seconds = (elapsed / 10).toFixed(10);  
-    var totalTime = 2;
-    var percentageTime = (seconds / totalTime) * 100;
-    console.log(percentageTime);
+    var elapsed = this.props.elapsed;
+    var totalTime = 300;
+    var percentageTime = (elapsed / totalTime) * 100;
+
     if (percentageTime >= 100) {
-      this.clearTimer();
-      console.log('OVER 100! ' + percentageTime);
       percentageTime = 100;
-      // Actions.incorrectAnswer();
     } 
     var timerStyle = {
       width: percentageTime + '%'
