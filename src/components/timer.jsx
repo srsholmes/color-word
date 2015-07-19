@@ -24,6 +24,8 @@ let Timer = React.createClass({
     this.timer = setInterval(this.tick, 1);
   },
   startTimer() {
+    //Need to set the state on the app using an action 
+    //and let the date/timer filter down thrugh props. 
     this.setState({ elapsed: 0, start: Date.now() });
     console.log(this.state.elapsed);
     console.log(this.timer);
@@ -34,7 +36,7 @@ let Timer = React.createClass({
   },
   tick() {
     console.log('tick');
-    this.setState({ elapsed: new Date() - this.state.start });
+    this.setState({ elapsed: new Date() - this.props.start });
   },
   
   render(){
