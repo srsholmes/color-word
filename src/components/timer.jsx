@@ -5,8 +5,7 @@ let Actions = require('../actions/actions');
 //Stores
 let Store = require('../stores/store');
 
-import { shuffle } from '../modules';
-
+var DEFAULT_TIMEOUT = 60;
 
 let Timer = React.createClass({
 
@@ -14,16 +13,32 @@ let Timer = React.createClass({
     Reflux.connect(Store)
   ],
 
+  getInitialState() {
+    console.log('getInitialState');
+    return { elapsed: 0 };
+  },
+  componentDidMount() {
+    console.log('componentDidMount');
+    this.timer = setInterval(this.tick, 50);
+  },
+  componentWillUnmount() {
+    console.log('componentWillUnmount');
+    clearInterval(this.timer);
+  },
+  tick() {
+    console.log('tick');
+    this.setState({elapsed: new Date() - this.props.start});
+  },
   
-
   render(){
     var timerStyle = {
-      width: this.props.timer + '%'
+      width: this.state.timer + '%'
     }
+    var elapsed = Math.round(this.state.elapsed / 100);
+    var seconds = (elapsed / 10).toFixed(1);  
     return (
       <div className="timer-wrap">
-        <div style={timerStyle} className="bar"></div>
-        <p>Timer</p>
+        <p>{seconds}</p>
       </div>
     )
   }

@@ -32,7 +32,7 @@ let App = React.createClass({
       <div>
         <h1>Colour Word - <span>choose the colour, not the word.</span></h1>
         <Game colors={this.state.colors} correctColor={this.state.correctColor}/>
-        <Timer timer={this.state.timer}/>
+        <Timer start={ Date.now() } timer={this.state.timer}/>
         <Score score={this.state.score}/>
       </div>
     )
