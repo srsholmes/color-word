@@ -2,6 +2,8 @@ let React = require('react');
 let Reflux = require('reflux');
 let Actions = require('../actions/actions');
 
+var tickCount = 0;
+
 //Stores
 let Store = require('../stores/store');
 
@@ -18,15 +20,39 @@ let Timer = React.createClass({
   },
   componentDidMount() {
     console.log('componentDidMount');
-    this.timer = setInterval(this.tick, 10);
+    // this.timer = setInterval(this.tick, 10);
+    this.tick();
   },
   clearTimer() {
     console.log('clearTimer');
     clearInterval(this.timer);
   },
   tick() {
-    Actions.setTick(( new Date() - this.props.start ));
-    // this.setState({ elapsed: new Date() - this.props.start });
+    this.timer = setTimeout(() =>{
+      console.log(tickCount);
+      tickCount++;
+      if (tickCount < 300) {
+        this.tick();
+        Actions.setTick(( tickCount ));
+      } else {
+        Actions.incorrectAnswer();
+        return
+      } 
+    }, 10)
+    // Actions.setTick(( new Date() - this.props.start ));
+    // var self = this;
+    // this.interval = setTimeout(function() {
+    //   if (self.props.status.isStop()) {
+    //     self.interval = undefined;
+    //     return;
+    //   }
+    //   self.setState({timeLeft: self.state.timeLeft - 1});
+    //   if (self.state.timeLeft <= 0) {
+    //     self.setState({timeLeft: self.defaultTimeout});
+    //     self.handleTimeout();
+    //   }
+    //   self._tick();
+    // }, 1000);
   },
   
   render(){
