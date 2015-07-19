@@ -15,12 +15,10 @@ let Game = React.createClass({
   ],
 
   chooseColor(i, shuffledColors, correctColor) {
-    console.log('chooose color');
     shuffledColors[i] == correctColor ? Actions.correctAnswer() : Actions.incorrectAnswer()
   },
 
   shouldComponentUpdate(nextProps) {
-    console.log(nextProps.colors);
     if (nextProps.colors === this.props.colors) return false;
     return true;
   },

@@ -22,11 +22,18 @@ let Store = Reflux.createStore({
   		colors: colorsArray,
   		correctColor: correctColor,
   		score: this.score,
-  		timer: 0
+  		timer: Date.now()
   	});
   },
 
+  onSetTick(tick) {
+    this.trigger({
+      elapsed: tick
+    });
+  },
+
   onIncorrectAnswer() {
+    console.log('incorrect answer');
   	var colorsArray = colors();
     var correctColor = colorsArray[Math.floor(Math.random() * colorsArray.length)];
   	this.score = 0;
@@ -34,7 +41,8 @@ let Store = Reflux.createStore({
   		colors: colorsArray,
   		correctColor: correctColor,
   		score: this.score,
-  		timer: 0
+  		timer: Date.now(),
+      elapsed: 0
   	});
   }
 });

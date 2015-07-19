@@ -22,7 +22,9 @@ let App = React.createClass({
     return {
       colors: colorsArray,
       correctColor: correctColor,
-      score: 0
+      score: 0,
+      timer: Date.now(),
+      elapsed: 0
     };
   },
 
@@ -31,7 +33,7 @@ let App = React.createClass({
       <div>
         <h1>Colour Word - <span>choose the colour, not the word.</span></h1>
         <Game colors={this.state.colors} correctColor={this.state.correctColor}/>
-        <Timer/>
+        <Timer start={this.state.timer} elapsed={ this.state.elapsed }/>
         <Score score={this.state.score}/>
       </div>
     )

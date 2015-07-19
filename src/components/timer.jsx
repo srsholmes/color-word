@@ -14,39 +14,32 @@ let Timer = React.createClass({
 //Refactor to use state and actions/ stores. 
   getInitialState() {
     console.log('getInitialState');
-    return { 
-      elapsed: 0,
-      start: Date.now()
-    };
+    return { elapsed: 0 };
   },
   componentDidMount() {
     console.log('componentDidMount');
-    this.timer = setInterval(this.tick, 1);
-  },
-  startTimer() {
-    //Need to set the state on the app using an action 
-    //and let the date/timer filter down thrugh props. 
-    this.setState({ elapsed: 0, start: Date.now() });
-    console.log(this.state.elapsed);
-    console.log(this.timer);
-    this.timer = setInterval(this.tick, 1);
+    this.timer = setInterval(this.tick, 10);
   },
   clearTimer() {
+    console.log('clearTimer');
     clearInterval(this.timer);
   },
   tick() {
-    console.log('tick');
-    this.setState({ elapsed: new Date() - this.props.start });
+    Actions.setTick(( new Date() - this.props.start ));
+    // this.setState({ elapsed: new Date() - this.props.start });
   },
   
   render(){
-    var elapsed = this.state.elapsed / 100;
+    var elapsed = this.props.elapsed / 100;
     var seconds = (elapsed / 10).toFixed(10);  
     var totalTime = 2;
     var percentageTime = (seconds / totalTime) * 100;
+    console.log(percentageTime);
     if (percentageTime >= 100) {
-      // percentageTime = 100;
       this.clearTimer();
+      console.log('OVER 100! ' + percentageTime);
+      percentageTime = 100;
+      // Actions.incorrectAnswer();
     } 
     var timerStyle = {
       width: percentageTime + '%'
