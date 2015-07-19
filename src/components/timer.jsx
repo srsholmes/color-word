@@ -30,7 +30,11 @@ let Timer = React.createClass({
     tickCount ++;
     console.log(tickCount);
     if (tickCount >= 300) {
-      alert('fuck')
+      alert('fuck');
+      //clear the interval
+      //doesnt work 
+      clearInterval(this.tick);
+
       return;
     } else {
       Actions.setTick(( new Date() - this.props.start ));  
