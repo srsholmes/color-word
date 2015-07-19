@@ -22,7 +22,8 @@ let Store = Reflux.createStore({
   		colors: colorsArray,
   		correctColor: correctColor,
   		score: this.score,
-  		timer: Date.now()
+  		timer: Date.now(),
+      elapsed: 0
   	});
   },
 

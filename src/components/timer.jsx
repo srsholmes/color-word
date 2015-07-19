@@ -13,41 +13,35 @@ let Timer = React.createClass({
     Reflux.connect(Store)
   ],
 
-//Refactor to use state and actions/ stores. 
   getInitialState() {
-    console.log('getInitialState');
     return { elapsed: 0 };
   },
   componentDidMount() {
     console.log('componentDidMount');
-    this.tick();
+    setInterval(this.tick, 10)
   },
+
   clearTimer() {
     console.log('clearTimer');
-    clearInterval(this.timer);
+    clearInterval(this.tick);
   },
   tick() {
     console.log('tick');
-    this.timer = setTimeout(() =>{
-      console.log(tickCount);
-      tickCount ++;
-      if (tickCount < 300) {
-        this.tick();
-        Actions.setTick(( tickCount ));
-      } else {
-        // Actions.incorrectAnswer();
-        clearTimeout(this.timer);
-        // this.clearInterval();
-        return
-      } 
-    }, 10)
-    //1000 ticks in a second
+    tickCount ++;
+    console.log(tickCount);
+    if (tickCount >= 300) {
+      alert('fuck')
+      return;
+    } else {
+      Actions.setTick(( new Date() - this.props.start ));  
+    }
   },
   
   render(){
-    var elapsed = this.props.elapsed;
-    var totalTime = 300;
-    var percentageTime = (elapsed / totalTime) * 100;
+    var elapsed = Math.round(this.state.elapsed / 100);
+    var seconds = (elapsed / 10).toFixed(10)
+    var totalTime = 3;
+    var percentageTime = (seconds / totalTime) * 100;
 
     if (percentageTime >= 100) {
       percentageTime = 100;
