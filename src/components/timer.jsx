@@ -25,14 +25,9 @@ let Timer = React.createClass({
     this.tick();
   },
 
-  clearTimer() {
-    console.log('clearTimer');
-    clearInterval(this.tick);
-  },
   tick() {
     console.log('tick');
     var tickCount = this.props.elapsed;
-
     console.log(tickCount);
     tickCount ++;
     if (tickCount >= 300) {
@@ -46,8 +41,9 @@ let Timer = React.createClass({
   
   render(){
     // var elapsed = Math.round(this.state.elapsed / 100);
-    var elapsed = this.state.elapsed;
+    var elapsed = this.props.elapsed;
     var seconds = (elapsed / 100).toFixed(10);
+    //Refactor total time to get difficulty/total time from props.
     var totalTime = 3;
     var percentageTime = (seconds / totalTime) * 100;
 
