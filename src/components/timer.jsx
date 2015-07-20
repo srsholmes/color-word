@@ -19,29 +19,34 @@ let Timer = React.createClass({
   },
 
   startTimer() {
+    var ticking = this.props.ticking;
     if (ticking === false) {
       console.log('the ticker is false');
-      //set ticker to true and another elapsed
-      elapsed = this.props.elased;
-      Actions.setElapsed(elapsed);
+      Actions.restartApp();
     }
   },
 
   tick() {
+    console.log('tick');
+    //Dont want to set these varibales every time!
     var timeStart = this.props.start;
     var propsElapsed = this.props.elapsed;
     var ticking = this.props.ticking;
     var elapsed = Date.now() - timeStart;
-    
+    console.log('timeStart', timeStart);
+    console.log('propsElapsed', propsElapsed);
+    console.log('ticking', ticking);
+    console.log('elapsed', elapsed);
+
+
+    if (ticking === false) return;
+
     if (ticking === true && elapsed < 4000) {
       Actions.setElapsed(elapsed);
     } else {
       console.log('lets stop the timer');
       Actions.stopTimer();
     }
-    console.log('timeStart', timeStart);
-    console.log('propsElapsed', propsElapsed);
-    console.log('elapsed', elapsed);
     //if elapsed is less than 1, do the new date otherwise use the props.
 
     // if (elapsed > 4000) {

@@ -24,10 +24,11 @@ let Store = Reflux.createStore({
   },
 
   onRestartApp() {
+    console.log('onRestartApp');
     this.trigger({
       start: Date.now(),
       elapsed: 0,
-      ticking: false
+      ticking: true
     });
   },
 
@@ -40,9 +41,9 @@ let Store = Reflux.createStore({
 
   onStopTimer() {
     console.log('stop timer');
-    // this.trigger({
-    //   ticking: false
-    // });
+    this.trigger({
+      ticking: false
+    });
   },
 
   onIncorrectAnswer() {
