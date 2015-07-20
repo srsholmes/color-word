@@ -19,25 +19,42 @@ let Timer = React.createClass({
   },
 
   startTimer() {
-    Actions.incorrectAnswer();
+    if (ticking === false) {
+      console.log('the ticker is false');
+      //set ticker to true and another elapsed
+      elapsed = this.props.elased;
+      Actions.setElapsed(elapsed);
+    }
   },
 
   tick() {
     var timeStart = this.props.start;
-    var elapsed = new Date - timeStart;
+    var propsElapsed = this.props.elapsed;
+    var ticking = this.props.ticking;
+    var elapsed = Date.now() - timeStart;
+    
+    if (ticking === true && elapsed < 4000) {
+      Actions.setElapsed(elapsed);
+    } else {
+      console.log('lets stop the timer');
+      Actions.stopTimer();
+    }
+    console.log('timeStart', timeStart);
+    console.log('propsElapsed', propsElapsed);
+    console.log('elapsed', elapsed);
     //if elapsed is less than 1, do the new date otherwise use the props.
 
-    if (elapsed > 4000) {
-      console.log('over 4000');
-      // Actions.setElapsed(elapsed);
-      
-      // counter++
-      // console.log(counter);
-      // if(counter > 5) return;
-      // Actions.incorrectAnswer();
-    } else {
-      Actions.setElapsed(elapsed);
-    }
+    // if (elapsed > 4000) {
+    //   console.log('over 4000');
+    //   // Actions.setElapsed(elapsed);
+
+    //   // counter++
+    //   // console.log(counter);
+    //   // if(counter > 5) return;
+    //   // Actions.incorrectAnswer();
+    // } else {
+    //   Actions.setElapsed(elapsed);
+    // }
   },
 
   render(){

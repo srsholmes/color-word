@@ -23,10 +23,26 @@ let Store = Reflux.createStore({
   	});
   },
 
+  onRestartApp() {
+    this.trigger({
+      start: Date.now(),
+      elapsed: 0,
+      ticking: false
+    });
+  },
+
   onSetElapsed(elapsed) {
     this.trigger({
-      elapsed: elapsed
+      elapsed: elapsed,
+      ticking: true
     });
+  },
+
+  onStopTimer() {
+    console.log('stop timer');
+    // this.trigger({
+    //   ticking: false
+    // });
   },
 
   onIncorrectAnswer() {

@@ -3,7 +3,8 @@ let Reflux = require('reflux');
 let Actions = Reflux.createActions({
   'correctAnswer': {},
   'incorrectAnswer': {},
-  'setTick': {},
+  'stopTimer' : {},
+  'restartApp': {},
   'setElapsed': {}
 });
 
