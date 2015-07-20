@@ -19,11 +19,8 @@ let Timer = React.createClass({
   },
 
   startTimer() {
-    var ticking = this.props.ticking;
-    if (ticking === false) {
-      console.log('the ticker is false');
-      Actions.restartApp();
-    }
+    console.log('startTimer');
+    Actions.restartApp();
   },
 
   tick() {
@@ -37,14 +34,12 @@ let Timer = React.createClass({
     console.log('propsElapsed', propsElapsed);
     console.log('ticking', ticking);
     console.log('elapsed', elapsed);
-
-
+    
     if (ticking === false) return;
-
     if (ticking === true && elapsed < 4000) {
       Actions.setElapsed(elapsed);
-    } else {
-      console.log('lets stop the timer');
+    } else if ( elapsed > 4000) {
+      console.log('elapsed > 4000');
       Actions.stopTimer();
     }
     //if elapsed is less than 1, do the new date otherwise use the props.
