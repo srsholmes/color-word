@@ -14,8 +14,8 @@ let Timer = React.createClass({
     this.tick();
   },
 
-  componentWillReceiveProps() {
-    this.tick();
+  componentWillReceiveProps(nextProps) {
+    this.tick(nextProps);
   },
 
   startTimer() {
@@ -23,7 +23,14 @@ let Timer = React.createClass({
     Actions.restartApp();
   },
 
-  tick() {
+  tick(nextProps) {
+    console.log(nextProps);
+    //Check if the app is restarting here.
+    if (nextProps) {
+      if (nextProps.ticking === false) {
+        console.log('inside the if');
+      }
+    }
     console.log('tick');
     //Dont want to set these varibales every time!
     var timeStart = this.props.start;
@@ -34,7 +41,7 @@ let Timer = React.createClass({
     console.log('propsElapsed', propsElapsed);
     console.log('ticking', ticking);
     console.log('elapsed', elapsed);
-    
+
     if (ticking === false) return;
     if (ticking === true && elapsed < 4000) {
       Actions.setElapsed(elapsed);
@@ -42,19 +49,6 @@ let Timer = React.createClass({
       console.log('elapsed > 4000');
       Actions.stopTimer();
     }
-    //if elapsed is less than 1, do the new date otherwise use the props.
-
-    // if (elapsed > 4000) {
-    //   console.log('over 4000');
-    //   // Actions.setElapsed(elapsed);
-
-    //   // counter++
-    //   // console.log(counter);
-    //   // if(counter > 5) return;
-    //   // Actions.incorrectAnswer();
-    // } else {
-    //   Actions.setElapsed(elapsed);
-    // }
   },
 
   render(){
