@@ -13,48 +13,34 @@ let Timer = React.createClass({
     Reflux.connect(Store)
   ],
 
-  getInitialState() {
-    return { elapsed: 0 };
-  },
   componentDidMount() {
     console.log('componentDidMount');
     this.tick();
   },
 
   componentWillReceiveProps() {
+    console.log('componentWillReceiveProps');
     this.tick();
   },
 
-//Refactor this using Date.now();
   tick() {
-    console.log('tick');
-    var tickCount = this.props.elapsed;
-    console.log(tickCount);
-    tickCount ++;
-    if (tickCount >= 300) {
-      console.log('over 3000!');
-      //Handle when the user runs our of time.
+    var timeStart = this.props.start;
+    var elapsed = new Date() - timeStart;
+    if (elapsed > 3000) {
+      console.log('OVER 3000!');
       return;
     } else {
-      Actions.setTick(( tickCount ));  
+      Actions.setElapsed(elapsed);
     }
+    console.log(elapsed);
   },
-  
-  render(){
-    // var elapsed = Math.round(this.state.elapsed / 100);
-    var elapsed = this.props.elapsed;
-    var seconds = (elapsed / 100).toFixed(10);
-    //Refactor total time to get difficulty/total time from props.
-    var totalTime = 3;
-    var percentageTime = (seconds / totalTime) * 100;
 
-    if (percentageTime >= 100) {
-      percentageTime = 100;
-    } 
+  render(){
+    var elapsed = this.props.elapsed;
+    var percentageTime = ((elapsed / 3000) * 100).toFixed(5);
     var timerStyle = {
       width: percentageTime + '%'
     }
-
     return (
       <div className="timer-wrap">
         <div style={timerStyle} className="bar"></div>

@@ -27,9 +27,15 @@ let Store = Reflux.createStore({
   	});
   },
 
-  onSetTick(tick) {
+  // onSetTick(tick) {
+  //   this.trigger({
+  //     elapsed: tick
+  //   });
+  // },
+
+  onSetElapsed(elapsed) {
     this.trigger({
-      elapsed: tick
+      elapsed: elapsed
     });
   },
 
