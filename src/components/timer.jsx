@@ -25,6 +25,7 @@ let Timer = React.createClass({
     this.tick();
   },
 
+//Refactor this using Date.now();
   tick() {
     console.log('tick');
     var tickCount = this.props.elapsed;
