@@ -2,7 +2,7 @@ let React = require('react');
 let Reflux = require('reflux');
 let Actions = require('../actions/actions');
 
-var tickCount = 0;
+// var tickCount = 0;
 
 //Stores
 let Store = require('../stores/store');
@@ -18,7 +18,11 @@ let Timer = React.createClass({
   },
   componentDidMount() {
     console.log('componentDidMount');
-    setInterval(this.tick, 10)
+    this.tick();
+  },
+
+  componentWillReceiveProps() {
+    this.tick();
   },
 
   clearTimer() {
@@ -27,23 +31,23 @@ let Timer = React.createClass({
   },
   tick() {
     console.log('tick');
-    tickCount ++;
-    console.log(tickCount);
-    if (tickCount >= 300) {
-      alert('fuck');
-      //clear the interval
-      //doesnt work 
-      clearInterval(this.tick);
+    var tickCount = this.props.elapsed;
 
+    console.log(tickCount);
+    tickCount ++;
+    if (tickCount >= 300) {
+      console.log('over 3000!');
+      //Handle when the user runs our of time.
       return;
     } else {
-      Actions.setTick(( new Date() - this.props.start ));  
+      Actions.setTick(( tickCount ));  
     }
   },
   
   render(){
-    var elapsed = Math.round(this.state.elapsed / 100);
-    var seconds = (elapsed / 10).toFixed(10)
+    // var elapsed = Math.round(this.state.elapsed / 100);
+    var elapsed = this.state.elapsed;
+    var seconds = (elapsed / 100).toFixed(10);
     var totalTime = 3;
     var percentageTime = (seconds / totalTime) * 100;
 
