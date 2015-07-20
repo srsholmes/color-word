@@ -2,16 +2,12 @@ let React = require('react');
 let Reflux = require('reflux');
 let Actions = require('../actions/actions');
 
-// var tickCount = 0;
+var counter = 0;
 
 //Stores
 let Store = require('../stores/store');
 
 let Timer = React.createClass({
-
-  mixins: [
-    Reflux.connect(Store)
-  ],
 
   componentDidMount() {
     console.log('componentDidMount');
@@ -19,25 +15,34 @@ let Timer = React.createClass({
   },
 
   componentWillReceiveProps() {
-    console.log('componentWillReceiveProps');
     this.tick();
+  },
+
+  startTimer() {
+    Actions.incorrectAnswer();
   },
 
   tick() {
     var timeStart = this.props.start;
-    var elapsed = new Date() - timeStart;
-    if (elapsed > 3000) {
-      console.log('OVER 3000!');
-      return;
+    var elapsed = new Date - timeStart;
+    //if elapsed is less than 1, do the new date otherwise use the props.
+
+    if (elapsed > 4000) {
+      console.log('over 4000');
+      // Actions.setElapsed(elapsed);
+      
+      // counter++
+      // console.log(counter);
+      // if(counter > 5) return;
+      // Actions.incorrectAnswer();
     } else {
       Actions.setElapsed(elapsed);
     }
-    console.log(elapsed);
   },
 
   render(){
     var elapsed = this.props.elapsed;
-    var percentageTime = ((elapsed / 3000) * 100).toFixed(5);
+    var percentageTime = ((elapsed / 4000) * 100).toFixed(5);
     var timerStyle = {
       width: percentageTime + '%'
     }

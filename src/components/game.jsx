@@ -10,10 +10,6 @@ import { shuffle, colors } from '../modules';
 
 let Game = React.createClass({
 
-  mixins: [
-    Reflux.connect(Store)
-  ],
-
   chooseColor(i, shuffledColors, correctColor) {
     shuffledColors[i] == correctColor ? Actions.correctAnswer() : Actions.incorrectAnswer()
   },
@@ -24,7 +20,6 @@ let Game = React.createClass({
   },
 
   render(){
-    console.log('game render');
     var colors = this.props.colors;
     var correctColor = this.props.correctColor;
     var word = colors[Math.floor(Math.random() * colors.length)];

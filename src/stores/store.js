@@ -4,14 +4,11 @@ let Actions = require('../actions/actions');
 
 import { colors, requestAnimationFrame } from '../modules';
 
-var timer = 0;
-
 let Store = Reflux.createStore({
   listenables: [Actions],
 
   init() {
     this.score = 0;
-    this.timer = 0;
   },
 
   onCorrectAnswer() {
@@ -22,16 +19,9 @@ let Store = Reflux.createStore({
   		colors: colorsArray,
   		correctColor: correctColor,
   		score: this.score,
-  		timer: Date.now(),
-      elapsed: 0
+  		start: Date.now()
   	});
   },
-
-  // onSetTick(tick) {
-  //   this.trigger({
-  //     elapsed: tick
-  //   });
-  // },
 
   onSetElapsed(elapsed) {
     this.trigger({
@@ -48,8 +38,7 @@ let Store = Reflux.createStore({
   		colors: colorsArray,
   		correctColor: correctColor,
   		score: this.score,
-  		timer: Date.now(),
-      elapsed: 0
+  		start: Date.now()
   	});
   }
 });
