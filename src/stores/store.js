@@ -27,8 +27,7 @@ let Store = Reflux.createStore({
     console.log('onRestartApp');
     this.trigger({
       start: Date.now(),
-      elapsed: 0,
-      ticking: true
+      elapsed: 0
     });
   },
 
@@ -42,7 +41,7 @@ let Store = Reflux.createStore({
   onStopTimer() {
     console.log('stop timer');
     this.trigger({
-      ticking: false
+      start: null
     });
   },
 

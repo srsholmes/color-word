@@ -29,6 +29,17 @@ let App = React.createClass({
     };
   },
 
+  //wont work because it doesnt recieve props...
+  //
+  componentWillReceiveProps(nextProps) {
+    console.log(nextProps);
+    if (nextProps.start == null) {
+      this.setState({
+        start: Date.now()
+      });
+    }
+  },
+
   render(){
     console.log('APP TIMER', this.state.start);
     return (
