@@ -42,6 +42,7 @@ let Store = Reflux.createStore({
     console.log('stop timer');
     this.trigger({
       start: null
+      ticking: false
     });
   },
 
