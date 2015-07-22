@@ -30,7 +30,6 @@ let App = React.createClass({
   },
 
   render(){
-    console.log('APP TIMER', this.state.start);
     return (
       <div>
         <h1>Colour Word - <span>choose the colour, not the word.</span></h1>

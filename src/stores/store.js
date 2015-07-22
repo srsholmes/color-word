@@ -2,7 +2,6 @@ let React = require('react');
 let Reflux = require('reflux');
 let Actions = require('../actions/actions');
 
-import { colors, requestAnimationFrame } from '../modules';
 
 let Store = Reflux.createStore({
   listenables: [Actions],
@@ -19,7 +18,17 @@ let Store = Reflux.createStore({
   onProgressTimer(elapsed) {
     this.contents.elapsed = elapsed;
     this.trigger(this.contents);
-  }
+  },
+
+  onCorrectAnswer(data) {
+    console.log('STORE CorrectAnswer');
+    console.log(this.contents.elapsed);
+    this.contents.colors = data.colors;
+    this.contents.correctColor = data.correctColor;
+    this.contents.score = data.score;
+    this.contents.elapsed = 0;
+    this.trigger(this.contents);
+  },
 
   // onCorrectAnswer() {
   // 	var colorsArray = colors();

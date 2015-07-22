@@ -7,17 +7,39 @@ let Store = require('../stores/store');
 
 import { shuffle, colors } from '../modules';
 
+var score = 0;
 
 let Game = React.createClass({
 
   chooseColor(i, shuffledColors, correctColor) {
-    shuffledColors[i] == correctColor ? Actions.correctAnswer() : Actions.incorrectAnswer()
+    if (shuffledColors[i] == correctColor) {
+      this.correctAnswer();
+    } else {
+      this.incorrectAnswer();
+    }
+  },
+
+  correctAnswer() {
+    var colorsArray = colors();
+    var correctColor = colorsArray[Math.floor(Math.random() * colorsArray.length)];
+    score ++ 
+      var data = {
+      colors: colorsArray,
+      correctColor: correctColor,
+      score: score
+    };
+    Actions.correctAnswer(data);
+    // Actions.startTimer();
+  },
+
+  incorrectAnswer() {
+    console.log('incorrect Answer');
   },
 
   shouldComponentUpdate(nextProps) {
     if (nextProps.colors === this.props.colors) return false;
     return true;
-  },
+  },  
 
   render(){
     var colors = this.props.colors;

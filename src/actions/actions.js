@@ -4,6 +4,8 @@ let animFrame;
 
 const TIME_DURATION = 4000;
 
+import { colors } from '../modules';
+
 let Actions = Reflux.createActions({
   'correctAnswer': {},
   'incorrectAnswer': {},
@@ -14,12 +16,14 @@ let Actions = Reflux.createActions({
   'setElapsed': {}
 });
 
+var score = 0;
 
 Actions.startTimer.listen(() => {
 	let start = Date.now();
 	animFrame = requestAnimationFrame(function raf() {
 		let elapse = Date.now() - start;
 		if (elapse > TIME_DURATION) {
+			console.log('STOPPING THE TIMER');
 			Actions.stopTimer();
 			Actions.progressTimer(TIME_DURATION);
 		} else {
@@ -31,6 +35,19 @@ Actions.startTimer.listen(() => {
 
 Actions.stopTimer.listen(() => cancelAnimationFrame(animFrame));
 
-
+// Actions.correctAnswer.listen(() => {
+// 	console.log('Actions onCorrectAnswer');
+// 	var colorsArray = colors();
+//   var correctColor = colorsArray[Math.floor(Math.random() * colorsArray.length)];
+// 	score++ 
+// 	var data = {
+// 		colors: colorsArray,
+// 		correctColor: correctColor,
+// 		score: score
+// 	};
+// 	console.log(data);
+// 	return data;
+// 	Actions.startTimer();
+// });
 
 export default Actions;
