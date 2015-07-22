@@ -7,8 +7,6 @@ let Store = require('../stores/store');
 
 import { shuffle, colors } from '../modules';
 
-var score = 0;
-
 let Game = React.createClass({
 
   chooseColor(i, shuffledColors, correctColor) {
@@ -20,20 +18,18 @@ let Game = React.createClass({
   },
 
   correctAnswer() {
-    var colorsArray = colors();
-    var correctColor = colorsArray[Math.floor(Math.random() * colorsArray.length)];
-    score ++ 
-      var data = {
-      colors: colorsArray,
-      correctColor: correctColor,
-      score: score
-    };
-    Actions.correctAnswer(data);
-    // Actions.startTimer();
+    Actions.correctAnswer();
+    //Have to stop the timer to clear the previous
+    //timer (stop requestanimationframe),
+    //and then start again.
+    Actions.stopTimer();
+    Actions.startTimer();
   },
 
   incorrectAnswer() {
-    console.log('incorrect Answer');
+    Actions.incorrectAnswer();
+    Actions.stopTimer();
+    Actions.startTimer();
   },
 
   shouldComponentUpdate(nextProps) {
