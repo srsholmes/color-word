@@ -8,7 +8,6 @@ import { colors } from '../modules';
 
 let Actions = Reflux.createActions({
   'correctAnswer': {},
-  'correctAnswerData': {},
   'incorrectAnswer': {},
   'startTimer' : {},
   'progressTimer' : {},
@@ -34,14 +33,12 @@ Actions.startTimer.listen(() => {
 
 Actions.stopTimer.listen(() => cancelAnimationFrame(animFrame));
 
-Actions.correctAnswer.listen(() => {
-	var colorsArray = colors();
-  var correctColor = colorsArray[Math.floor(Math.random() * colorsArray.length)];
-	var data = {
-		colors: colorsArray,
-		correctColor: correctColor
-	};
-	Actions.correctAnswerData(data);
-});
+let resetTimer = () => {
+	Actions.stopTimer();
+	Actions.startTimer();
+}
+
+Actions.correctAnswer.listen(resetTimer);
+Actions.incorrectAnswer.listen(resetTimer);
 
 export default Actions;

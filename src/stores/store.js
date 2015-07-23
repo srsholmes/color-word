@@ -2,6 +2,8 @@ let React = require('react');
 let Reflux = require('reflux');
 let Actions = require('../actions/actions');
 
+import { colors } from '../modules';
+
 
 let Store = Reflux.createStore({
   listenables: [Actions],
@@ -11,8 +13,19 @@ let Store = Reflux.createStore({
   init() {
     this.contents = {
       score: 0,
-      elapsed: 0
+      elapsed: 0,
+      start: Date.now()
     };
+    this._shuffleColors();
+  },
+
+  _shuffleColors() {
+    this.contents.colors = colors();
+    this.contents.correctColor = this.contents.colors[Math.floor(Math.random() * this.contents.colors.length)];
+  },
+
+  getInitialState() {
+    return this.contents;
   },
 
   onProgressTimer(elapsed) {
@@ -21,15 +34,13 @@ let Store = Reflux.createStore({
   },
 
   onIncorrectAnswer() {
-    //Bug where score is set in the actions is not linked to the 
-    //incorrect score;
+    this._shuffleColors();
     this.contents.score = 0;
     this.trigger(this.contents);
   },
 
-  onCorrectAnswerData(data) {
-    this.contents.colors = data.colors;
-    this.contents.correctColor = data.correctColor;
+  onCorrectAnswer() {
+    this._shuffleColors();
     this.contents.score ++;
     this.trigger(this.contents);
   }
