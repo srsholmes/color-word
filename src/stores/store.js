@@ -30,7 +30,7 @@ let Store = Reflux.createStore({
   onCorrectAnswerData(data) {
     this.contents.colors = data.colors;
     this.contents.correctColor = data.correctColor;
-    this.contents.score = data.score;
+    this.contents.score ++;
     this.trigger(this.contents);
   }
 

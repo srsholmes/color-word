@@ -17,8 +17,6 @@ let Actions = Reflux.createActions({
   'setElapsed': {}
 });
 
-var score = 0;
-
 Actions.startTimer.listen(() => {
 	let start = Date.now();
 	animFrame = requestAnimationFrame(function raf() {
@@ -39,11 +37,9 @@ Actions.stopTimer.listen(() => cancelAnimationFrame(animFrame));
 Actions.correctAnswer.listen(() => {
 	var colorsArray = colors();
   var correctColor = colorsArray[Math.floor(Math.random() * colorsArray.length)];
-	score++ 
 	var data = {
 		colors: colorsArray,
-		correctColor: correctColor,
-		score: score
+		correctColor: correctColor
 	};
 	Actions.correctAnswerData(data);
 });
