@@ -19,7 +19,7 @@ let Game = React.createClass({
     let { colors, correctColor } = this.props;
     var word = colors[Math.floor(Math.random() * colors.length)];
     var shuffledColors = shuffle(colors);
-    var colorList = shuffledColors.map(function (color, i) {
+    var colorList = shuffledColors.map(color => {
       // ternary operator
       let onClickHandler = color === correctColor ? Actions.correctAnswer : Actions.incorrectAnswer;
       return (
@@ -27,7 +27,7 @@ let Game = React.createClass({
           <a><span>{color}</span></a>
         </li>
       )
-    }, this);
+    });
 
     return (
       <div className="game-wrapper">
