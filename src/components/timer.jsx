@@ -10,7 +10,6 @@ let Store = require('../stores/store');
 let Timer = React.createClass({
 
   componentDidMount() {
-    console.log('componentDidMount');
     Actions.startTimer();
   },
 
