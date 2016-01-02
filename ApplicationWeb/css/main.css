@@ -1,0 +1,49 @@
+/* line 1, /Users/cabbio540/Sites/personal/color-word/src/scss/_base.scss */
+* {
+  box-sizing: border-box; }
+
+/* line 5, /Users/cabbio540/Sites/personal/color-word/src/scss/_base.scss */
+html, body {
+  padding: 0;
+  margin: 0;
+  font-family: 'Helvetica', cursive;
+  background-repeat: no-repeat;
+  height: 100%;
+  background-color: white; }
+
+/* line 20, /Users/cabbio540/Sites/personal/color-word/src/scss/_base.scss */
+input[type="checkbox"] {
+  margin: 10px 0;
+  height: 40px;
+  display: block;
+  margin: auto; }
+
+/* line 27, /Users/cabbio540/Sites/personal/color-word/src/scss/_base.scss */
+.my-custom-view {
+  background: red;
+  height: 300px;
+  width: 300px;
+  position: relative;
+  margin: auto; }
+  /* line 33, /Users/cabbio540/Sites/personal/color-word/src/scss/_base.scss */
+  .my-custom-view.true {
+    background: green; }
+
+/* line 38, /Users/cabbio540/Sites/personal/color-word/src/scss/_base.scss */
+[app] {
+  width: 80%;
+  height: 100%;
+  margin: auto;
+  text-align: center;
+  padding-bottom: 5%;
+  padding-top: 5%;
+  max-width: 1000px;
+  overflow: hidden; }
+  @media (max-width: 640px) {
+    /* line 38, /Users/cabbio540/Sites/personal/color-word/src/scss/_base.scss */
+    [app] {
+      max-width: 100%;
+      width: 100%;
+      height: auto; } }
+
+/*# sourceMappingURL=sass */
