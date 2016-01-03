@@ -9,11 +9,12 @@ let Game = React.createClass({
   },
 
   clickColor(color, correctColor) {
-    color === correctColor ? console.log('blah') : console.log('blur');
+    color === correctColor ? this.props.correctAnswer() : this.props.incorrectAnswer();
   },
 
   render(){
-    let { colors, correctColor } = this.props;
+    console.log(this.props);
+    let { colors, correctColor } = this.props.setColors;
     let word = colors[Math.floor(Math.random() * colors.length)];
     let shuffledColors = shuffle(colors);
     let colorList = shuffledColors.map((color, i) => {

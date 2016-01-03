@@ -14,7 +14,7 @@ let App = React.createClass({
     return (
       <div>
         <h1>Color Word - <span>choose the colour, not the word.</span></h1>
-        <Game {...setColors}/>
+        <Game {...this.props}/>
         {/*<Timer start={this.state.start} elapsed={ this.state.elapsed }/>*/}
         <Score score={score}/>
       </div>
