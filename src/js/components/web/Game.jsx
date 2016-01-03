@@ -3,10 +3,10 @@ import { shuffle, colors } from '../../modules';
 
 let Game = React.createClass({
 
-  shouldComponentUpdate(nextProps) {
-    if (nextProps.colors === this.props.colors) return false;
-    return true;
-  },
+  // shouldComponentUpdate(nextProps) {
+  //   if (nextProps.colors === this.props.colors) return false;
+  //   return true;
+  // },
 
   clickColor(color, correctColor) {
     color === correctColor ? this.props.correctAnswer() : this.props.incorrectAnswer();

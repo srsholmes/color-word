@@ -11,6 +11,7 @@ import { Game, Timer, Score } from './';
 let App = React.createClass({
   render(){
     const { changeHeading, score, setColors } = this.props;
+    console.log(setColors);
     return (
       <div>
         <h1>Color Word - <span>choose the colour, not the word.</span></h1>
