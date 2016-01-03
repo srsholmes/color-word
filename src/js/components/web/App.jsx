@@ -10,14 +10,13 @@ import { Game, Timer, Score } from './';
 
 let App = React.createClass({
   render(){
-    const { changeHeading } = this.props;
+    const { changeHeading, score, setColors } = this.props;
     return (
       <div>
-        <h1 onClick={changeHeading}>{this.props.heading}</h1>
         <h1>Color Word - <span>choose the colour, not the word.</span></h1>
-        <Game colors={this.state.colors} correctColor={this.state.correctColor}/>
-        <Timer start={this.state.start} elapsed={ this.state.elapsed }/>
-        <Score score={this.state.score}/>
+        <Game {...setColors}/>
+        {/*<Timer start={this.state.start} elapsed={ this.state.elapsed }/>*/}
+        <Score score={score}/>
       </div>
     )
   }
@@ -25,8 +24,8 @@ let App = React.createClass({
 
 function mapStateToProps(state) {
   return {
-    counter: state.counter,
-    heading: state.heading
+    score: state.score,
+    setColors: state.setColors
   };
 }
 

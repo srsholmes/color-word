@@ -6,17 +6,19 @@ let Game = React.createClass({
   shouldComponentUpdate(nextProps) {
     if (nextProps.colors === this.props.colors) return false;
     return true;
-  },  
+  },
+
+  clickColor(color, correctColor) {
+    color === correctColor ? console.log('blah') : console.log('blur');
+  },
 
   render(){
     let { colors, correctColor } = this.props;
     let word = colors[Math.floor(Math.random() * colors.length)];
     let shuffledColors = shuffle(colors);
-    let colorList = shuffledColors.map(color => {
-      // ternary operator
-      let onClickHandler = color === correctColor ? Actions.correctAnswer : Actions.incorrectAnswer;
+    let colorList = shuffledColors.map((color, i) => {
       return (
-        <li className={'bg-'+ color + ' color-item'} onClick={onClickHandler}>
+        <li key={i} className={'bg-'+ color + ' color-item'} onClick={() => this.clickColor(color, correctColor)}>
           <a><span>{color}</span></a>
         </li>
       )

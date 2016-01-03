@@ -1,9 +1,9 @@
 import { combineReducers } from 'redux';
-import counter from './counter';
-import heading from './heading';
+import setColors from './setColors';
+import score from './score';
 const rootReducer = combineReducers({
-  counter,
-  heading
+  setColors,
+  score
 });
 
 export default rootReducer;
