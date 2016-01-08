@@ -7,14 +7,16 @@ let obj = {
 
 export default function timer(state = obj, action) {
   switch (action.type) {
-  case CORRECT_ANSWER:
-  case START_TIMER:
-    return state = Date.now();
   case PROGRESS_TIMER:
   	return {...state, ...{
         elapsed: action.time
 			}
-    }; 
+    };
+  case STOP_TIMER:
+  	return {...state, ...{
+        elapsed: 0
+			}
+    };
   default:
     return state;
   }

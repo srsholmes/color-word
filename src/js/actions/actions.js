@@ -14,11 +14,14 @@ export function startTimer() {
   return (dispatch, getState) => {
   	let start = Date.now();
     animFrame = requestAnimationFrame(function raf() {
+    	console.log('raf');
     	let elapse = Date.now() - start;
     	if (elapse > TIME_DURATION) {
     		console.log('STOPPING THE TIMER');
-    		dispatch(stopTimer());
+    	 	dispatch(stopTimer());
     		dispatch(progressTimer(TIME_DURATION));
+	   		window.cancelAnimationFrame(animFrame);
+    		return false;
     	} else {
     		dispatch(progressTimer(elapse));
     	}
@@ -28,8 +31,7 @@ export function startTimer() {
 }
 
 export function stopTimer() {
-	console.log('stopTimer');
-	cancelAnimationFrame(animFrame);
+	window.cancelAnimationFrame(animFrame);
   return {
     type: STOP_TIMER
   };
