@@ -57,6 +57,14 @@ export function correctAnswerTasks() {
 	}
 }
 
+export function incorrectAnswerTasks() {
+	return (dispatch) => {
+		dispatch(stopTimer());
+		dispatch(startTimer());
+		dispatch(incorrectAnswer());
+	}
+}
+
 export function incorrectAnswer() {
 	return {
 		type: INCORRECT_ANSWER

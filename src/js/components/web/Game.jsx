@@ -9,7 +9,7 @@ let Game = React.createClass({
   },
 
   clickColor(color, correctColor) {
-    color === correctColor ? this.props.correctAnswerTasks() : this.props.incorrectAnswer();
+    color === correctColor ? this.props.correctAnswerTasks() : this.props.incorrectAnswerTasks();
   },
 
   render(){
