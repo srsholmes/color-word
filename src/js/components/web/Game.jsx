@@ -3,17 +3,16 @@ import { shuffle, colors } from '../../modules';
 
 let Game = React.createClass({
 
-  // shouldComponentUpdate(nextProps) {
-  //   if (nextProps.colors === this.props.colors) return false;
-  //   return true;
-  // },
+  shouldComponentUpdate(nextProps) {
+    if (nextProps.setColors.colors === this.props.setColors.colors) return false;
+    return true;
+  },
 
   clickColor(color, correctColor) {
-    color === correctColor ? this.props.correctAnswer() : this.props.incorrectAnswer();
+    color === correctColor ? this.props.correctAnswerTasks() : this.props.incorrectAnswer();
   },
 
   render(){
-    console.log(this.props);
     let { colors, correctColor } = this.props.setColors;
     let word = colors[Math.floor(Math.random() * colors.length)];
     let shuffledColors = shuffle(colors);

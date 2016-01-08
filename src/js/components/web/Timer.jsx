@@ -3,13 +3,17 @@ let counter = 0;
 
 let Timer = React.createClass({
   componentDidMount() {
-    console.log('start timer');
-    // Actions.startTimer();
+    console.log('componentDidMount');
+    this.props.startTimer();
+  },
+
+  startTimer() {
+    console.log('play again clicked');
   },
 
   render(){
-    var { elapsed } = this.props;
-    var percentageTime = ((elapsed / 4000) * 100).toFixed(5);
+    var { timer } = this.props;
+    var percentageTime = ((timer.elapsed / 4000) * 100).toFixed(5);
     var timerStyle = {
       width: percentageTime + '%'
     }

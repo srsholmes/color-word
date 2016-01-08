@@ -9,8 +9,6 @@ let initialState = {
 	correctColor: correctColor
 };
 
-console.log(initialState);
-
 export default function setColors(state = initialState, action) {
   switch (action.type) {
   case CORRECT_ANSWER:
