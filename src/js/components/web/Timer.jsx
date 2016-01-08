@@ -8,7 +8,7 @@ let Timer = React.createClass({
   },
 
   startTimer() {
-    console.log('play again clicked');
+    this.props.incorrectAnswerTasks();
   },
 
   render(){
@@ -20,7 +20,7 @@ let Timer = React.createClass({
     return (
       <div className="timer-wrap">
         <div style={timerStyle} className="bar"></div>
-        <a onClick={this.startTimer}>Play again?</a>
+        <a onClick={this.startTimer}>Click to play again</a>
       </div>
     )
   }

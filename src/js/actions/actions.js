@@ -10,14 +10,12 @@ let animFrame;
 const TIME_DURATION = 4000;
 
 export function startTimer() {
-	console.log('startTimer action');
   return (dispatch, getState) => {
   	let start = Date.now();
     animFrame = requestAnimationFrame(function raf() {
     	console.log('raf');
     	let elapse = Date.now() - start;
     	if (elapse > TIME_DURATION) {
-    		console.log('STOPPING THE TIMER');
     	 	dispatch(stopTimer());
     		dispatch(progressTimer(TIME_DURATION));
 	   		window.cancelAnimationFrame(animFrame);
