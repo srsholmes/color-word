@@ -6,8 +6,11 @@ export const PROGRESS_TIMER = 'PROGRESS_TIMER';
 export const CORRECT_ANSWER = 'CORRECT_ANSWER';
 export const INCORRECT_ANSWER = 'INCORRECT_ANSWER';
 
+import { TIME_DURATION } from '../constants/constants';
+
+console.log(TIME_DURATION);
+
 let animFrame;
-const TIME_DURATION = 4000;
 
 export function startTimer() {
   return (dispatch, getState) => {
@@ -15,9 +18,9 @@ export function startTimer() {
     animFrame = requestAnimationFrame(function raf() {
     	console.log('raf');
     	let elapse = Date.now() - start;
-    	if (elapse > TIME_DURATION) {
+    	if (elapse > TIME_DURATION.easy) {
     	 	dispatch(stopTimer());
-    		dispatch(progressTimer(TIME_DURATION));
+    		dispatch(progressTimer(TIME_DURATION.easy));
 	   		window.cancelAnimationFrame(animFrame);
     		return false;
     	} else {
