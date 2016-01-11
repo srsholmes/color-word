@@ -15,11 +15,12 @@ let animFrame;
 export function startTimer() {
   return (dispatch, getState) => {
   	let start = Date.now();
+  	let { difficulty } = getState();
     animFrame = requestAnimationFrame(function raf() {
     	let elapse = Date.now() - start;
-    	if (elapse > TIME_DURATION.easy) {
+    	if (elapse > TIME_DURATION[difficulty]) {
     	 	dispatch(stopTimer());
-    		dispatch(progressTimer(TIME_DURATION.easy));
+    		dispatch(progressTimer(TIME_DURATION[difficulty]));
 	   		window.cancelAnimationFrame(animFrame);
     		return false;
     	} else {
