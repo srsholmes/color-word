@@ -18,8 +18,8 @@ export function startTimer() {
   	let { difficulty } = getState();
     animFrame = requestAnimationFrame(function raf() {
     	let elapse = Date.now() - start;
-    	if (elapse > TIME_DURATION[difficulty]) {
-    	 	dispatch(stopTimer());
+    	if (elapse >= TIME_DURATION[difficulty]) {
+    	 	dispatch(incorrectAnswerTasks());
     		dispatch(progressTimer(TIME_DURATION[difficulty]));
 	   		window.cancelAnimationFrame(animFrame);
     		return false;

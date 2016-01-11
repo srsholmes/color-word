@@ -18,9 +18,7 @@ let Timer = React.createClass({
 
   render(){
     var { timer, difficulty } = this.props;
-    console.log(difficulty);
     var percentageTime = ((timer.elapsed / TIME_DURATION[difficulty]) * 100).toFixed(5);
-    console.log(percentageTime);
     var timerStyle = {
       width: `${percentageTime}%`
     }
