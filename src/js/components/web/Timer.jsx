@@ -5,7 +5,6 @@ import { TIME_DURATION } from '../../constants/constants';
 
 let Timer = React.createClass({
   componentDidMount() {
-    console.log('componentDidMount');
     this.props.startTimer();
   },
 
@@ -14,9 +13,8 @@ let Timer = React.createClass({
   },
 
   render(){
-    console.log(TIME_DURATION);
-    var { timer } = this.props;
-    var percentageTime = ((timer.elapsed / TIME_DURATION.easy) * 100).toFixed(5);
+    var { timer, difficulty } = this.props;
+    var percentageTime = ((timer.elapsed / TIME_DURATION[difficulty]) * 100).toFixed(5);
     var timerStyle = {
       width: percentageTime + '%'
     }
