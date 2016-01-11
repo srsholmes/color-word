@@ -25,8 +25,8 @@ let Timer = React.createClass({
     return (
       <div className="timer-wrap">
         <div style={timerStyle} className="bar"></div>
-        <div><a onClick={this.startTimer}>Click to play again</a></div>
-        <div><a onClick={this.changeDifficulty}>Change difficulty</a></div>
+        <div><h4><a onClick={this.startTimer}>Click to play again</a></h4></div>
+        <div><h4><a onClick={this.changeDifficulty}>Change difficulty</a></h4></div>
       </div>
     )
   }

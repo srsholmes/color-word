@@ -107,6 +107,7 @@ body {
 
 .chosen-word {
   text-transform: uppercase;
+  font-size: 2.3em;
 }
 
 //Timer
@@ -115,6 +116,15 @@ body {
   margin-top: 30px;
   margin-bottom: 20px;
   width: 100%;
+  @media screen and (max-width: 640px) {
+    width: 90%;
+    margin: auto;
+    margin-top: 30px;
+  }
+  h4 {
+    margin-top: 20px;
+    font-size: 1.6em;
+  }
 
   .bar {
     position: relative;
