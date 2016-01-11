@@ -1,4 +1,4 @@
-import { CORRECT_ANSWER, START_TIMER, PROGRESS_TIMER, STOP_TIMER } from '../actions/actions';
+import { CORRECT_ANSWER, START_TIMER, PROGRESS_TIMER, STOP_TIMER, RESET_DIFFICULTY, CHANGE_DIFFICULTY } from '../actions/actions';
 
 let obj = {
 	start: Date.now(),
@@ -13,6 +13,8 @@ export default function timer(state = obj, action) {
 			}
     };
   case STOP_TIMER:
+  case RESET_DIFFICULTY:
+  case CHANGE_DIFFICULTY:
   	return {...state, ...{
         elapsed: 0
 			}

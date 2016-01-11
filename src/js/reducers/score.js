@@ -1,11 +1,28 @@
-import { INCORRECT_ANSWER, CORRECT_ANSWER } from '../actions/actions';
+import { INCORRECT_ANSWER, CORRECT_ANSWER, RESET_DIFFICULTY, CHANGE_DIFFICULTY } from '../actions/actions';
 
-export default function score(state = 0, action) {
+let obj = {
+	currentScore: 0,
+	topScore: 0
+};
+
+export default function score(state = obj, action) {
   switch (action.type) {
   case CORRECT_ANSWER:
-    return state + 1;
+  let newTop;
+  let currentScore = state.currentScore;
+  state.currentScore >= state.topScore ? newTop = ++currentScore : newTop = state.topScore;
+  return {...state, ...{ 
+      currentScore: ++state.currentScore,
+      topScore: newTop
+    }
+  }
   case INCORRECT_ANSWER:
-    return state = 0;
+  case RESET_DIFFICULTY:
+  case CHANGE_DIFFICULTY:
+    return {...state, ...{ 
+      currentScore: 0
+    }
+  }
   default:
     return state;
   }

@@ -14,10 +14,9 @@ let App = React.createClass({
     if (difficulty) {
       return (
         <div>
-          <h1>Color Word - <span>choose the colour, not the word.</span></h1>
           <Game {...this.props}/>
           <Timer {...this.props}/>
-          <Score score={score}/>
+          <Score {...this.props}/>
         </div>
       );
     } else {

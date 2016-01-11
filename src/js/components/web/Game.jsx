@@ -18,7 +18,7 @@ let Game = React.createClass({
     let shuffledColors = shuffle(colors);
     let colorList = shuffledColors.map((color, i) => {
       return (
-        <li key={i} className={'bg-'+ color + ' color-item'} onClick={() => this.clickColor(color, correctColor)}>
+        <li key={i} className={`bg-${color} color-item`} onClick={() => this.clickColor(color, correctColor)}>
           <a><span>{color}</span></a>
         </li>
       )
@@ -26,7 +26,7 @@ let Game = React.createClass({
 
     return (
       <div className="game-wrapper">
-        <h2 className={`color-${correctColor}`}>{word}</h2>
+        <h2 className={`color-${correctColor} chosen-word`}>{word}</h2>
         <ul className="color-choice-ul">{colorList}</ul>
       </div>
     )

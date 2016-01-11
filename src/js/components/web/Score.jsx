@@ -9,9 +9,11 @@ let Score = React.createClass({
   },
 
   render(){
+    const { score } = this.props;
     return (
       <div className="score-wrap">
-        <p>Score: {this.props.score}</p>
+        <p>Score: {score.currentScore}</p>
+        <p>Top Score: {score.topScore}</p>
       </div>
     )
   }

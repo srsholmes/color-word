@@ -6,6 +6,7 @@ export const PROGRESS_TIMER = 'PROGRESS_TIMER';
 export const CORRECT_ANSWER = 'CORRECT_ANSWER';
 export const INCORRECT_ANSWER = 'INCORRECT_ANSWER';
 export const CHANGE_DIFFICULTY = 'CHANGE_DIFFICULTY';
+export const RESET_DIFFICULTY = 'RESET_DIFFICULTY';
 
 import { TIME_DURATION } from '../constants/constants';
 
@@ -48,9 +49,29 @@ export function correctAnswer() {
   };
 }
 
+export function incorrectAnswer() {
+	return {
+		type: INCORRECT_ANSWER
+	};
+}
+
 export function changeDifficulty(difficulty) {
 	return {
 		type: CHANGE_DIFFICULTY, difficulty
+	}
+}
+
+export function resetDifficulty() {
+	return {
+		type: RESET_DIFFICULTY
+	}
+}
+
+export function resetDifficultyTasks() {
+	return (dispatch) => {
+		dispatch(stopTimer());
+		dispatch(incorrectAnswer());
+		dispatch(resetDifficulty());
 	}
 }
 
@@ -77,10 +98,4 @@ export function incorrectAnswerTasks() {
 		dispatch(startTimer());
 		dispatch(incorrectAnswer());
 	}
-}
-
-export function incorrectAnswer() {
-	return {
-		type: INCORRECT_ANSWER
-	};
 }

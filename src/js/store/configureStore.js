@@ -3,9 +3,12 @@ import thunk from '../middleware/thunk';
 import reducer from '../reducers';
 import createLogger from 'redux-logger';
 
+import { PROGRESS_TIMER } from '../actions/actions';
+
+
 const createStoreWithMiddleware = applyMiddleware(
   thunk,
-  createLogger()
+  createLogger({ predicate: (getState, action) => action.type !== PROGRESS_TIMER})
 )(createStore);
 
 export default function configureStore(initialState) {

@@ -1,8 +1,4 @@
 /* line 1, /Users/cabbio540/Sites/personal/color-word/src/scss/_base.scss */
-* {
-  box-sizing: border-box; }
-
-/* line 5, /Users/cabbio540/Sites/personal/color-word/src/scss/_base.scss */
 html, body {
   padding: 0;
   margin: 0;
@@ -11,25 +7,25 @@ html, body {
   height: 100%;
   background-color: white; }
 
-/* line 20, /Users/cabbio540/Sites/personal/color-word/src/scss/_base.scss */
+/* line 16, /Users/cabbio540/Sites/personal/color-word/src/scss/_base.scss */
 input[type="checkbox"] {
   margin: 10px 0;
   height: 40px;
   display: block;
   margin: auto; }
 
-/* line 27, /Users/cabbio540/Sites/personal/color-word/src/scss/_base.scss */
+/* line 23, /Users/cabbio540/Sites/personal/color-word/src/scss/_base.scss */
 .my-custom-view {
   background: red;
   height: 300px;
   width: 300px;
   position: relative;
   margin: auto; }
-  /* line 33, /Users/cabbio540/Sites/personal/color-word/src/scss/_base.scss */
+  /* line 29, /Users/cabbio540/Sites/personal/color-word/src/scss/_base.scss */
   .my-custom-view.true {
     background: green; }
 
-/* line 38, /Users/cabbio540/Sites/personal/color-word/src/scss/_base.scss */
+/* line 34, /Users/cabbio540/Sites/personal/color-word/src/scss/_base.scss */
 [app] {
   width: 80%;
   height: 100%;
@@ -40,92 +36,88 @@ input[type="checkbox"] {
   max-width: 1000px;
   overflow: hidden; }
   @media (max-width: 640px) {
-    /* line 38, /Users/cabbio540/Sites/personal/color-word/src/scss/_base.scss */
+    /* line 34, /Users/cabbio540/Sites/personal/color-word/src/scss/_base.scss */
     [app] {
       max-width: 100%;
       width: 100%;
       height: auto; } }
 
-/* line 54, /Users/cabbio540/Sites/personal/color-word/src/scss/_base.scss */
+/* line 50, /Users/cabbio540/Sites/personal/color-word/src/scss/_base.scss */
 html {
   position: relative;
   min-height: 100%; }
   @media screen and (max-width: 640px) {
-    /* line 54, /Users/cabbio540/Sites/personal/color-word/src/scss/_base.scss */
+    /* line 50, /Users/cabbio540/Sites/personal/color-word/src/scss/_base.scss */
     html {
       height: auto;
       min-height: inherit; } }
 
-/* line 75, /Users/cabbio540/Sites/personal/color-word/src/scss/_base.scss */
+/* line 71, /Users/cabbio540/Sites/personal/color-word/src/scss/_base.scss */
 .bg-blue {
   background-color: #2196F3; }
 
-/* line 78, /Users/cabbio540/Sites/personal/color-word/src/scss/_base.scss */
+/* line 74, /Users/cabbio540/Sites/personal/color-word/src/scss/_base.scss */
 .color-blue {
   color: #2196F3; }
 
-/* line 75, /Users/cabbio540/Sites/personal/color-word/src/scss/_base.scss */
+/* line 71, /Users/cabbio540/Sites/personal/color-word/src/scss/_base.scss */
 .bg-red {
   background-color: #FF4F4F; }
 
-/* line 78, /Users/cabbio540/Sites/personal/color-word/src/scss/_base.scss */
+/* line 74, /Users/cabbio540/Sites/personal/color-word/src/scss/_base.scss */
 .color-red {
   color: #FF4F4F; }
 
-/* line 75, /Users/cabbio540/Sites/personal/color-word/src/scss/_base.scss */
+/* line 71, /Users/cabbio540/Sites/personal/color-word/src/scss/_base.scss */
 .bg-orange {
   background-color: #FF9800; }
 
-/* line 78, /Users/cabbio540/Sites/personal/color-word/src/scss/_base.scss */
+/* line 74, /Users/cabbio540/Sites/personal/color-word/src/scss/_base.scss */
 .color-orange {
   color: #FF9800; }
 
-/* line 75, /Users/cabbio540/Sites/personal/color-word/src/scss/_base.scss */
+/* line 71, /Users/cabbio540/Sites/personal/color-word/src/scss/_base.scss */
 .bg-green {
   background-color: #8BC34A; }
 
-/* line 78, /Users/cabbio540/Sites/personal/color-word/src/scss/_base.scss */
+/* line 74, /Users/cabbio540/Sites/personal/color-word/src/scss/_base.scss */
 .color-green {
   color: #8BC34A; }
 
-/* line 87, /Users/cabbio540/Sites/personal/color-word/src/scss/_base.scss */
+/* line 83, /Users/cabbio540/Sites/personal/color-word/src/scss/_base.scss */
 * {
   box-sizing: border-box;
   margin: 0;
   padding: 0; }
 
-/* line 94, /Users/cabbio540/Sites/personal/color-word/src/scss/_base.scss */
+/* line 90, /Users/cabbio540/Sites/personal/color-word/src/scss/_base.scss */
 body {
   background: #FDFDFD;
   color: #414141;
   font-family: arial; }
 
-/* line 101, /Users/cabbio540/Sites/personal/color-word/src/scss/_base.scss */
+/* line 97, /Users/cabbio540/Sites/personal/color-word/src/scss/_base.scss */
 .heading {
   font-size: 1em; }
-  /* line 103, /Users/cabbio540/Sites/personal/color-word/src/scss/_base.scss */
+  /* line 99, /Users/cabbio540/Sites/personal/color-word/src/scss/_base.scss */
   .heading span {
     font-size: 0.6em; }
 
-/* line 108, /Users/cabbio540/Sites/personal/color-word/src/scss/_base.scss */
+/* line 104, /Users/cabbio540/Sites/personal/color-word/src/scss/_base.scss */
 .score-wrap {
   margin-top: 20px; }
 
-/* line 117, /Users/cabbio540/Sites/personal/color-word/src/scss/_base.scss */
-.game-wrapper.show {
-  display: block; }
+/* line 108, /Users/cabbio540/Sites/personal/color-word/src/scss/_base.scss */
+.chosen-word {
+  text-transform: uppercase; }
 
-/* line 123, /Users/cabbio540/Sites/personal/color-word/src/scss/_base.scss */
-.difficulty.hide {
-  display: none; }
-
-/* line 129, /Users/cabbio540/Sites/personal/color-word/src/scss/_base.scss */
+/* line 113, /Users/cabbio540/Sites/personal/color-word/src/scss/_base.scss */
 .timer-wrap {
   position: relative;
   margin-top: 30px;
   margin-bottom: 20px;
   width: 100%; }
-  /* line 135, /Users/cabbio540/Sites/personal/color-word/src/scss/_base.scss */
+  /* line 119, /Users/cabbio540/Sites/personal/color-word/src/scss/_base.scss */
   .timer-wrap .bar {
     position: relative;
     top: 0;
@@ -135,19 +127,19 @@ body {
     -webkit-transition: width 0s ease-in;
             transition: width 0s ease-in;
     margin-bottom: 10px; }
-  /* line 145, /Users/cabbio540/Sites/personal/color-word/src/scss/_base.scss */
+  /* line 129, /Users/cabbio540/Sites/personal/color-word/src/scss/_base.scss */
   .timer-wrap .below {
     background: black;
     width: 100%; }
-  /* line 150, /Users/cabbio540/Sites/personal/color-word/src/scss/_base.scss */
+  /* line 134, /Users/cabbio540/Sites/personal/color-word/src/scss/_base.scss */
   .timer-wrap .over {
     background: #818181;
     width: 0%; }
-    /* line 154, /Users/cabbio540/Sites/personal/color-word/src/scss/_base.scss */
+    /* line 138, /Users/cabbio540/Sites/personal/color-word/src/scss/_base.scss */
     .timer-wrap .over.full {
       width: 100%; }
 
-/* line 160, /Users/cabbio540/Sites/personal/color-word/src/scss/_base.scss */
+/* line 144, /Users/cabbio540/Sites/personal/color-word/src/scss/_base.scss */
 .wrapper {
   margin: 0 auto;
   width: 80%;
@@ -156,17 +148,30 @@ body {
   margin-bottom: 180px;
   text-align: center;
   padding-top: 60px; }
-  /* line 169, /Users/cabbio540/Sites/personal/color-word/src/scss/_base.scss */
+  /* line 153, /Users/cabbio540/Sites/personal/color-word/src/scss/_base.scss */
   .wrapper h2 {
     text-transform: uppercase;
     font-size: 3em; }
   @media screen and (max-width: 640px) {
-    /* line 160, /Users/cabbio540/Sites/personal/color-word/src/scss/_base.scss */
+    /* line 144, /Users/cabbio540/Sites/personal/color-word/src/scss/_base.scss */
     .wrapper {
       padding-top: 20px; } }
 
-/* line 179, /Users/cabbio540/Sites/personal/color-word/src/scss/_base.scss */
-.color-choice-ul, .difficulty {
+/* line 163, /Users/cabbio540/Sites/personal/color-word/src/scss/_base.scss */
+.difficulty-choose {
+  width: 100%; }
+  /* line 165, /Users/cabbio540/Sites/personal/color-word/src/scss/_base.scss */
+  .difficulty-choose p {
+    width: 100%; }
+  /* line 168, /Users/cabbio540/Sites/personal/color-word/src/scss/_base.scss */
+  .difficulty-choose li {
+    border: 1px solid black;
+    background: red;
+    min-width: 33%;
+    color: black; }
+
+/* line 176, /Users/cabbio540/Sites/personal/color-word/src/scss/_base.scss */
+.color-choice-ul, .difficulty-choose {
   margin-top: 30px;
   display: -webkit-box;
   display: -webkit-flex;
@@ -175,8 +180,8 @@ body {
   -webkit-flex-wrap: wrap;
       -ms-flex-wrap: wrap;
           flex-wrap: wrap; }
-  /* line 185, /Users/cabbio540/Sites/personal/color-word/src/scss/_base.scss */
-  .color-choice-ul li, .difficulty li {
+  /* line 181, /Users/cabbio540/Sites/personal/color-word/src/scss/_base.scss */
+  .color-choice-ul li, .difficulty-choose li {
     display: -webkit-box;
     display: -webkit-flex;
     display: -ms-flexbox;
@@ -190,16 +195,16 @@ body {
     position: relative;
     margin: 0 1%; }
     @media screen and (max-width: 640px) {
-      /* line 185, /Users/cabbio540/Sites/personal/color-word/src/scss/_base.scss */
-      .color-choice-ul li, .difficulty li {
+      /* line 181, /Users/cabbio540/Sites/personal/color-word/src/scss/_base.scss */
+      .color-choice-ul li, .difficulty-choose li {
         -webkit-box-flex: 2;
         -webkit-flex-grow: 2;
             -ms-flex-positive: 2;
                 flex-grow: 2;
         min-width: 45%;
         margin-top: 2%; } }
-    /* line 197, /Users/cabbio540/Sites/personal/color-word/src/scss/_base.scss */
-    .color-choice-ul li a, .difficulty li a {
+    /* line 193, /Users/cabbio540/Sites/personal/color-word/src/scss/_base.scss */
+    .color-choice-ul li a, .difficulty-choose li a {
       display: block;
       height: 100%;
       width: 100%;
@@ -207,8 +212,8 @@ body {
       text-transform: uppercase;
       vertical-align: middle;
       cursor: pointer; }
-      /* line 207, /Users/cabbio540/Sites/personal/color-word/src/scss/_base.scss */
-      .color-choice-ul li a span, .difficulty li a span {
+      /* line 203, /Users/cabbio540/Sites/personal/color-word/src/scss/_base.scss */
+      .color-choice-ul li a span, .difficulty-choose li a span {
         position: absolute;
         top: 38%;
         display: block;
@@ -217,13 +222,5 @@ body {
         left: 0;
         right: 0;
         margin: auto; }
-
-/* line 222, /Users/cabbio540/Sites/personal/color-word/src/scss/_base.scss */
-.difficulty li {
-  margin-top: 40px;
-  width: 28%; }
-  /* line 225, /Users/cabbio540/Sites/personal/color-word/src/scss/_base.scss */
-  .difficulty li a {
-    color: white; }
 
 /*# sourceMappingURL=sass */
