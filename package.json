@@ -5,7 +5,7 @@
   "main": "gulpfile.js",
   "scripts": {
     "start": "./node_modules/gulp/bin/gulp.js default",
-    "serve": "forever start ./node_modules/http-server/bin/http-server -p 80 -d false",
+    "serve": "forever start ./node_modules/http-server/bin/http-server ./ApplicationWeb -p 80 -d false",
     "build": "NODE_ENV=production ./node_modules/gulp/bin/gulp.js prod",
     "prod": "NODE_ENV=production ./node_modules/gulp/bin/gulp.js prod && npm run serve",
     "native-build-gulp": "NODE_ENV=production ./node_modules/gulp/bin/gulp.js buildNative",
