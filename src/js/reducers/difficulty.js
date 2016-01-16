@@ -5,7 +5,6 @@ export default function score(state = null, action) {
   case CHANGE_DIFFICULTY:
     return state = action.difficulty;
   case RESET_DIFFICULTY:
-  console.log('CHANGE_DIFFICULTY STORE');
     return state = null;
   default:
     return state;
