@@ -46,6 +46,14 @@ let MenuButton = React.createClass({
 
   closeAnimation() {
     console.log('closeAnimation');
+    var offsetY, offsetX;
+    var time = 0;
+    Object.keys(this.refs).forEach((ref, i) => {
+      velocity(this.refs[ref], 
+        { opacity: "0", scaleX: ".4", scaleY: ".4", translateY: offsetY + 'px', translateX: offsetX + 'px'},
+        { duration: 80 }
+      );
+    });
   },
 
   renderMenuButtons() {
