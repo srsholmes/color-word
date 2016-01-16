@@ -1,6 +1,6 @@
 import { CHANGE_DIFFICULTY, RESET_DIFFICULTY } from '../actions/actions';
 
-export default function score(state = null, action) {
+export default function difficulty(state = null, action) {
   switch (action.type) {
   case CHANGE_DIFFICULTY:
     return state = action.difficulty;
