@@ -30,7 +30,7 @@ let App = React.createClass({
     return (
       <div>
         {content}
-        <MenuButton {...this.props}/>
+        {/*<MenuButton {...this.props}/>*/}
       </div>
     )
     
