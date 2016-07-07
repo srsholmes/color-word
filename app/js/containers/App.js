@@ -18,32 +18,13 @@ import {Game, Timer, Score, DifficultyChoose} from '../components';
 
 export default class App extends Component {
   render() {
-    console.log('app render')
-    let content;
-    const {difficulty} = this.props;
-    if (difficulty) {
-      content = (
-        <div>
-          <Game {...this.props}/>
-          <Timer {...this.props}/>
-          <Score {...this.props}/>
-        </div>
-      );
-    } else {
-      content = (
-        <DifficultyChoose {...this.props}/>
-      );
-    }
-
-    return (
-      <div>
-        <p>Hello</p>
-        {content}
-      </div>
-    )
-
+    return this.props.difficulty ?
+      (<div>
+        <Game {...this.props}/>
+        <Timer {...this.props}/>
+        <Score {...this.props}/>
+      </div>)
+      :
+      (<DifficultyChoose {...this.props}/>)
   }
-};
-
-
-
+}

@@ -8,7 +8,7 @@ export const INCORRECT_ANSWER = 'INCORRECT_ANSWER';
 export const CHANGE_DIFFICULTY = 'CHANGE_DIFFICULTY';
 export const RESET_DIFFICULTY = 'RESET_DIFFICULTY';
 
-import { TIME_DURATION } from '../../../OLD SRC/js/constants/constants';
+import { TIME_DURATION } from '../constants/constants';
 
 export const CLOSE_MENU = 'CLOSE_MENU';
 export const OPEN_MENU = 'OPEN_MENU';

@@ -1,7 +1,8 @@
 const TIME_DURATION = {
-	easy: 4000,
-	medium: 2000,
-	hard: 1000
+	easy: 5000,
+	medium: 2500,
+	hard: 1000,
+	extreme: 500
 };
 
 const MENU = {
