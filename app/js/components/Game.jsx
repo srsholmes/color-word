@@ -36,12 +36,17 @@ const modalMarkUp = (props) =>
         <h2 className="mdl-card__title-text">Game Over!</h2>
       </div>
       <div className="mdl-card__supporting-text">
-        You scored. *** SCORE HERE ***
+        <p>{`You scored ${props.score.currentScore}`}</p>
+        <p>{`Your top score is ${props.score.topScore}`}</p>
       </div>
       <div className="mdl-card__actions mdl-card--border">
         <a onClick={() => props.actions.startGame()}
            className="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">
           Play again
+        </a>
+        <a onClick={() => props.actions.resetDifficultyTasks()}
+           className="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">
+          Change difficulty
         </a>
       </div>
     </div>

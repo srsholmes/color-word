@@ -107,7 +107,6 @@ export function correctAnswerTasks() {
 
 export function incorrectAnswerTasks() {
   return (dispatch) => {
-    dispatch(startGame());
     dispatch(stopTimer());
     dispatch(startTimer());
     dispatch(incorrectAnswer());
