@@ -1,4 +1,4 @@
-import { CORRECT_ANSWER, INCORRECT_ANSWER, RESET_DIFFICULTY, CHANGE_DIFFICULTY } from '../actions/index';
+import { CORRECT_ANSWER, RESET_DIFFICULTY, CHANGE_DIFFICULTY } from '../actions/index';
 import { colors, shuffle, getRandom } from '../modules';
 
 const colorsArray = colors();

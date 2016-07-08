@@ -9,7 +9,8 @@ import {Game, Timer, Score, DifficultyChoose} from '../components';
   score: state.score,
   setColors: state.setColors,
   timer: state.timer,
-  difficulty: state.difficulty
+  difficulty: state.difficulty,
+  game: state.game
 }), (dispatch) => {
   return {
     actions: bindActionCreators(Actions, dispatch)

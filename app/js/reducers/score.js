@@ -1,6 +1,6 @@
 import { INCORRECT_ANSWER, CORRECT_ANSWER, RESET_DIFFICULTY, CHANGE_DIFFICULTY } from '../actions/index';
 
-let obj = {
+const obj = {
 	currentScore: 0,
 	topScore: 0
 };

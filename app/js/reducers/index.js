@@ -4,12 +4,14 @@ import score from './score';
 import timer from './timer';
 import difficulty from './difficulty';
 import menuButton from './menuButton';
+import game from './game'
 const rootReducer = combineReducers({
   setColors,
   score,
   timer,
   difficulty,
-  menuButton
+  menuButton,
+  game
 });
 
 export default rootReducer;
