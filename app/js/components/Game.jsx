@@ -1,29 +1,43 @@
 import React, {Component} from 'react'
-import {shuffle} from '../modules';
+import {percentageTime} from '../modules';
+import {TIME_DURATION} from '../constants/constants';
 
 const clickColor = (color, correctColor, props) => {
   color === correctColor ? props.actions.correctAnswerTasks() : props.actions.incorrectAnswerTasks();
 }
 
-const colorList = (colors, correctColor, props) => shuffle(colors).map((color, i) =>
-  <li key={i} className={`bg-${color} color-item`} onClick={() => clickColor(color, correctColor, props)}>
+const scaleStyle = (gametype, percentTime) => {
+  switch (gametype) {
+    case 'normal':
+      return {}
+      break;
+    case 'shrink':
+      return ({transform: `scale(${ 1 - (percentTime / 100) }`})
+      break;
+    case 'grow':
+      return ({transform: `scale(${percentTime / 100}`})
+      break;
+    default:
+      return {}
+  }
+}
+
+const colorList = (colors, correctColor, props, percentTime) => colors.map((color, i) =>
+  <li key={i} className={`bg-${color} color-item`} style={scaleStyle('normal', percentTime)}
+      onClick={() => clickColor(color, correctColor, props)}>
     <a><span>{color}</span></a>
   </li>
 )
 
 export class Game extends Component {
-  shouldComponentUpdate(nextProps) {
-    if (nextProps.setColors.colors === this.props.setColors.colors) return false;
-    return true;
-  }
-
   render() {
-    let {colors, correctColor} = this.props.setColors;
-    let word = colors[Math.floor(Math.random() * colors.length)];
+    const {colors, correctColor, word} = this.props.setColors;
+    const {timer, difficulty} = this.props
+    const percentTime = percentageTime(timer.elapsed, TIME_DURATION, difficulty)
     return (
       <div className="game-wrapper">
         <h2 className={`color-${correctColor} chosen-word`}>{word}</h2>
-        <ul className="color-choice-ul">{colorList(colors, correctColor, this.props)}</ul>
+        <ul className="color-choice-ul">{colorList(colors, correctColor, this.props, percentTime)}</ul>
       </div>
     )
   }

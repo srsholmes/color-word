@@ -5,6 +5,13 @@ const TIME_DURATION = {
 	extreme: 500
 };
 
+const GAME_TYPES = {
+  normal: 'normal',
+  grow: 'grow',
+  shrink: 'shrink'
+}
+
+
 const MENU = {
 	options: [
 		'changeDifficulty',

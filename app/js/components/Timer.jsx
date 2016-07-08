@@ -2,6 +2,7 @@ import React, {Component} from 'react'
 let counter = 0;
 
 import {TIME_DURATION} from '../constants/constants';
+import { percentageTime } from '../modules'
 
 export class Timer extends Component {
   componentDidMount() {
@@ -10,8 +11,8 @@ export class Timer extends Component {
   render() {
     const {timer, difficulty} = this.props;
     const {incorrectAnswerTasks, resetDifficultyTasks} = this.props.actions
-    const percentageTime = ((timer.elapsed / TIME_DURATION[difficulty]) * 100).toFixed(5);
-    const timerStyle = {width: `${percentageTime}%`}
+    const percentTime = percentageTime(timer.elapsed, TIME_DURATION, difficulty)
+    const timerStyle = {width: `${percentTime}%`}
     return (
       <div className="timer-wrap">
         <div style={timerStyle} className="bar"></div>

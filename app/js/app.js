@@ -13,7 +13,7 @@ const initialState = window.__INITIAL_STATE__
 
 const setUpStore = (initialState) => {
   const store = createStore(reducer, initialState, compose(
-    applyMiddleware(createLogger(), thunk),
+    applyMiddleware(createLogger({ predicate: (getState, action) => action.type !== 'PROGRESS_TIMER' }), thunk),
     window.devToolsExtension ? window.devToolsExtension() : f => f
   ));
 

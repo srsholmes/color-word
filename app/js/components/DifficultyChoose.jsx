@@ -1,5 +1,5 @@
 import React, {Component} from 'react'
-import {colors} from '../modules';
+import {colors, shuffle} from '../modules';
 import {TIME_DURATION} from '../constants/constants';
 
 const difficulties = (props) =>
@@ -12,7 +12,7 @@ const difficulties = (props) =>
 
 export const DifficultyChoose = (props) =>
   <div className="game-wrapper">
-    <h1>Color Word - <span>choose the colour, not the word.</span></h1>
+    <h1>Choose the colour, not the word.</h1>
     <ul className="color-choice-ul">
       {difficulties(props)}
     </ul>
