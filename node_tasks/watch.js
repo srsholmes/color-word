@@ -6,24 +6,13 @@ var lrload = require('livereactload');
 var envify = require("envify");
 var isProd = process.env.NODE_ENV === "production";
 var colors = require('colors');
-require('dotenv').config();
-
-const LOCAL_STORAGE_KEY =  process.env.LOCAL_STORAGE_KEY;
-const APP_ID =  process.env.APP_ID;
-const APP_KEY =  process.env.APP_KEY;
-const GOOGLE_API_KEY =  process.env.GOOGLE_API_KEY;
 
 function createBundler() {
   return browserify({
     entries: ['./app/js/app.js'],
     transform: [
       [babelify, {}],
-      [envify, {
-        LOCAL_STORAGE_KEY: LOCAL_STORAGE_KEY,
-        APP_ID: APP_ID,
-        APP_KEY: APP_KEY,
-        GOOGLE_API_KEY: GOOGLE_API_KEY
-      }]
+      [envify, {}]
     ],
     plugin: [watchify, lrload],
     debug: !isProd,

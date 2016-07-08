@@ -3,23 +3,12 @@ var fs = require('fs')
 var envify = require("envify");
 var babelify = require('babelify');
 var colors = require('colors');
-require('dotenv').config();
-
-const LOCAL_STORAGE_KEY =  process.env.LOCAL_STORAGE_KEY;
-const APP_ID =  process.env.APP_ID;
-const APP_KEY =  process.env.APP_KEY;
-const GOOGLE_API_KEY =  process.env.GOOGLE_API_KEY;
 
 var bundler = browserify({
   entries: ['./app/js/app.js'],
   transform: [
     [babelify, {}],
-    [envify, {
-      LOCAL_STORAGE_KEY: LOCAL_STORAGE_KEY,
-      APP_ID: APP_ID,
-      APP_KEY: APP_KEY,
-      GOOGLE_API_KEY: GOOGLE_API_KEY
-    }]
+    [envify, {}]
   ],
   global: true
 }, 'uglifyify')

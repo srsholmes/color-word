@@ -1,5 +1,5 @@
 import React, {Component} from 'react'
-import {percentageTime} from '../modules';
+import {percentageTime, shuffle, getRandom} from '../modules';
 import {TIME_DURATION} from '../constants/constants';
 
 const clickColor = (color, correctColor, props) => {
@@ -22,22 +22,22 @@ const scaleStyle = (gametype, percentTime) => {
   }
 }
 
-const colorList = (colors, correctColor, props, percentTime) => colors.map((color, i) =>
+const colorList = (colors, correctColor, colorWords, props, percentTime) => colors.map((color, i) =>
   <li key={i} className={`bg-${color} color-item`} style={scaleStyle('normal', percentTime)}
       onClick={() => clickColor(color, correctColor, props)}>
-    <a><span>{color}</span></a>
+    <a><span>{`${colorWords[i]}`}</span></a>
   </li>
 )
 
 export class Game extends Component {
   render() {
-    const {colors, correctColor, word} = this.props.setColors;
+    const {colors, correctColor, word, colorWords} = this.props.setColors;
     const {timer, difficulty} = this.props
     const percentTime = percentageTime(timer.elapsed, TIME_DURATION, difficulty)
     return (
       <div className="game-wrapper">
         <h2 className={`color-${correctColor} chosen-word`}>{word}</h2>
-        <ul className="color-choice-ul">{colorList(colors, correctColor, this.props, percentTime)}</ul>
+        <ul className="color-choice-ul">{colorList(colors, correctColor, colorWords, this.props, percentTime)}</ul>
       </div>
     )
   }

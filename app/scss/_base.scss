@@ -7,6 +7,7 @@ html, body {
   background-repeat: no-repeat;
   height: 100%;
   background-color: white;
+  color: material-color('grey', '600');;
 }
 
 body {
@@ -61,26 +62,6 @@ html {
   }
 }
 
-$Blue: #2196F3;
-$Red: #FF4F4F;
-$Orange: #FF9800;
-$Green: #2196F3;
-// $Purple: #FF9800;
-// $Pink: #FF9800;
-
-$colors: ("blue": #2196F3, "red": #FF4F4F, "orange": #FF9800, "green": #8BC34A);
-
-@each $colorName, $color in $colors {
-  .bg-#{$colorName} {
-    background-color: $color;
-  }
-  .color-#{$colorName} {
-    color: $color;
-  }
-}
-
-$bg-color: #FDFDFD;
-$text-color: #414141;
 
 //Reset
 * {
@@ -131,20 +112,20 @@ body {
   .bar {
     position: relative;
     top: 0;
-    height: 2px;
+    height: 1px;
     width: 100%;
-    background: black;
+    background: material-color('grey', '600');
     transition: width 0s ease-in;
     margin-bottom: 10px;
   }
 
   .below {
-    background: black;
+    background: material-color('grey', '600');
     width: 100%;
   }
 
   .over {
-    background: #818181;
+    background: material-color('grey', '600');
     width: 0%;
 
     &.full {
@@ -172,18 +153,6 @@ body {
   }
 }
 
-.difficulty-choose {
-  width: 100%;
-  p {
-    width: 100%;
-  }
-  li {
-    border: 1px solid black;
-    background: red;
-    min-width: 33%;
-    color: black;
-  }
-}
 
 .color-choice-ul, .difficulty-choose {
   margin-top: 30px;

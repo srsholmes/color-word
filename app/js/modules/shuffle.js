@@ -1,11 +1,6 @@
-export const shuffle = (array) => {
-	var currentIndex = array.length, temporaryValue, randomIndex ;
-  while (0 !== currentIndex) {
-    randomIndex = Math.floor(Math.random() * currentIndex);
-    currentIndex -= 1;
-    temporaryValue = array[currentIndex];
-    array[currentIndex] = array[randomIndex];
-    array[randomIndex] = temporaryValue;
-  }
-  return array;
+export const shuffle = (list) => sort(() => 0.5 - Math.random(), list)
+
+export const sort = (fn, list) => {
+  const clone = list.slice(0)
+  return clone.sort(fn)
 }

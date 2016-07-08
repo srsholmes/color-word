@@ -1,14 +1,14 @@
 import { CORRECT_ANSWER, INCORRECT_ANSWER, RESET_DIFFICULTY, CHANGE_DIFFICULTY } from '../actions/index';
-import { colors, shuffle } from '../modules';
+import { colors, shuffle, getRandom } from '../modules';
 
 const colorsArray = colors();
-const correctColor = colorsArray[Math.floor(Math.random() * colorsArray.length)];
-const word = colorsArray[Math.floor(Math.random() * colorsArray.length)];
-
+const correctColor = getRandom(colorsArray);
+const word = getRandom(colorsArray);
 const initialState = {
-	colors: colorsArray,
+	colors: shuffle(colorsArray),
 	correctColor,
-  word
+  word,
+  colorWords: shuffle(colorsArray)
 };
 
 export default function setColors(state = initialState, action) {
@@ -17,9 +17,10 @@ export default function setColors(state = initialState, action) {
   case CHANGE_DIFFICULTY:
   case RESET_DIFFICULTY:
     return {...state, ...{ 
-      colors: shuffle(colors()),
-      correctColor: colorsArray[Math.floor(Math.random() * colorsArray.length)],
-      word: colorsArray[Math.floor(Math.random() * colorsArray.length)]
+      colors: shuffle(colorsArray),
+      colorWords: shuffle(colorsArray),
+      correctColor: getRandom(colorsArray),
+      word: getRandom(colorsArray)
     }
   };
   default:
