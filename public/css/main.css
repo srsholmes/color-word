@@ -1644,6 +1644,7 @@ body {
     height: 1px;
     width: 100%;
     background: #757575;
+    -webkit-transition: width 0s ease-in;
     transition: width 0s ease-in;
     margin-bottom: 10px; }
   .timer-wrap .below {
