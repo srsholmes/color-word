@@ -24,7 +24,7 @@ function bundle() {
     .on('error', function (err) {
       console.log(`[${colors.blue(new Date())}] Error '${colors.red('bundleJS')}' ${err}`);
     })
-    .pipe(fs.createWriteStream('./public/js/app.js')).on('finish', function () {
+    .pipe(fs.createWriteStream('./ApplicationWeb/js/app.js')).on('finish', function () {
     const end = new Date();
     const time = end.getTime() - start.getTime();
     const timeStr = time < 1000 ? `${time} ms` : `${Math.floor(time / 1000)} seconds`;
