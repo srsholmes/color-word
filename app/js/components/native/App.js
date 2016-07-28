@@ -19,32 +19,7 @@ import {DifficultyChoose} from './';
   }
 })
 export default class ApplicationNative extends Component {
-
   render() {
     return (<DifficultyChoose {...this.props}/>)
   };
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: '#F5FCFF',
-  },
-  counter: {
-    fontSize: 30,
-    top: 10,
-    fontWeight: 'bold'
-  },
-  welcome: {
-    fontSize: 40,
-    textAlign: 'center',
-    margin: 10,
-  },
-  instructions: {
-    textAlign: 'center',
-    color: '#333333',
-    marginBottom: 5,
-  },
-});
