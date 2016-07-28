@@ -1,7 +1,7 @@
 const watch = require('watch')
 const fs = require('fs')
 const stripDirectory = (f) => f.split('/').slice(2).join('/')
-const createFilePath = (f) => `./ApplicationNative/ApplicationNative/app/${stripDirectory(f)}`
+const createFilePath = (f) => `./ApplicationNative/ColorWord/app/${stripDirectory(f)}`
 
 watch.createMonitor('./app/js', function (monitor) {
   monitor.on('created', function (f) {

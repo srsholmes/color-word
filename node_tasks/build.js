@@ -4,11 +4,17 @@ var envify = require("envify");
 var babelify = require('babelify');
 var colors = require('colors');
 
+const NODE_PLATFORM =  process.env.NODE_PLATFORM;
+
+console.log('NODE_PLATFORM', NODE_PLATFORM)
+
 var bundler = browserify({
   entries: ['./app/js/app.js'],
   transform: [
     [babelify, {}],
-    [envify, {}]
+    [envify, {
+       NODE_PLATFORM: NODE_PLATFORM
+    }]
   ],
   global: true
 }, 'uglifyify')

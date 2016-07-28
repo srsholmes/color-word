@@ -6,7 +6,7 @@ var path = require('path');
 // NODE_ENV=web node env_task.js
 // node ../src/js/app.js
 
-var buildEnv = process.env.NODE_ENV;
+const buildEnv = process.env.NODE_PLATFORM;
 
 function getEnvironments() {
 	var viewPath = path.resolve('./app/js/appContainers');

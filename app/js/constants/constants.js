@@ -19,6 +19,7 @@ const MENU = {
 		'about'
 	]
 };
+
 module.exports = {
   TIME_DURATION: TIME_DURATION,
   MENU: MENU
