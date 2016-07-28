@@ -16,8 +16,8 @@ const circleStyle = (i) =>
 
 const difficulties = (props) =>
   Object.keys(TIME_DURATION).map((key, i) =>
-    <View style={circleStyle(i)} key={i} onClick={() => props.actions.changeDifficulty(key)}>
-      <Text style={styles.circleText}>{key.toUpperCase()}</Text>
+    <View style={circleStyle(i)} key={i} onPress={() => alert(i)}>
+      <Text onPress={() => alert(i)} style={styles.circleText}>{key.toUpperCase()}</Text>
     </View>
   );
 
