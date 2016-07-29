@@ -25,7 +25,7 @@ const difficulties = (props) =>
 
 export const DifficultyChoose = (props) =>
   <View>
-    <Text style={styles.heading}>Choose the colour, not the words.</Text>
+    <Text style={styles.heading}>Choose the colour, not the word.</Text>
     <View style={styles.colorChoiceList}>
       {difficulties(props)}
     </View>

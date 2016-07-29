@@ -3,7 +3,7 @@ import {StyleSheet, Text, View, Platform} from 'react-native'
 import {connect} from 'react-redux'
 import {bindActionCreators} from 'redux'
 import * as Actions from '../../actions';
-import {DifficultyChoose, Timer, Score} from './';
+import {DifficultyChoose, Timer, Score, Game} from './';
 
 @connect((state) => ({
   menuOpen: state.menuButton,
@@ -25,6 +25,7 @@ export default class ApplicationNative extends Component {
         {
           this.props.difficulty
             ? (<View style={styles.gameWrapper}>
+                <Game {...this.props}/>
                 <Timer {...this.props}/>
                 <Score {...this.props}/>
               </View>)
