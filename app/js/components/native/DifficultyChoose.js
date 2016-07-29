@@ -1,5 +1,5 @@
 import React, {Component}  from 'react';
-import {StyleSheet, Text, View, Platform} from 'react-native'
+import {StyleSheet, Text, View, Platform, TouchableWithoutFeedback} from 'react-native'
 import {colors} from '../../modules';
 import {TIME_DURATION} from '../../constants/constants';
 
@@ -16,13 +16,15 @@ const circleStyle = (i) =>
 
 const difficulties = (props) =>
   Object.keys(TIME_DURATION).map((key, i) =>
-    <View style={circleStyle(i)} key={i} onPress={() => alert(i)}>
-      <Text onPress={() => alert(i)} style={styles.circleText}>{key.toUpperCase()}</Text>
-    </View>
+    <TouchableWithoutFeedback onPress={() => props.actions.changeDifficulty(key)}>
+      <View style={circleStyle(i)} key={i}>
+        <Text key={i} style={styles.circleText}>{key.toUpperCase()}</Text>
+      </View>
+    </TouchableWithoutFeedback>
   );
 
 export const DifficultyChoose = (props) =>
-  <View style={styles.gameWrapper}>
+  <View>
     <Text style={styles.heading}>Choose the colour, not the words.</Text>
     <View style={styles.colorChoiceList}>
       {difficulties(props)}
@@ -37,14 +39,6 @@ const styles = StyleSheet.create({
     color: 'white',
     flex: 1
   },
-  gameWrapper: {
-    flexDirection: 'column',
-    justifyContent: 'center',
-    alignItems: 'center',
-    flex: 1,
-    backgroundColor: 'green',
-    top: 40,
-  },
   heading: {
     fontSize: 30,
     fontWeight: 'bold',
@@ -56,7 +50,6 @@ const styles = StyleSheet.create({
     flexWrap: 'wrap',
     justifyContent: 'space-between',
     alignItems: 'center',
-    alignSelf: 'stretch',
-    backgroundColor: 'yellow'
+    alignSelf: 'stretch'
   }
 });
